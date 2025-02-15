@@ -1,0 +1,97 @@
+/* src/DriverSignUp.css */
+
+.driver-signup {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
+.signup-box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.basic-info-container {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.question-and-upload {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.signup-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-field, .select-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.file-upload {
+    margin-top: 10px;
+}
+
+.file-upload label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.file-upload input {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+.file-upload input:hover {
+    background-color: #e0e0e0;
+}
+
+
+.submit-button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
