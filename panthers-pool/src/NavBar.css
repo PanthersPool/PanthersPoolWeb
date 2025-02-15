@@ -1,0 +1,114 @@
+/* Ensure the navbar stays at a fixed size and items are centered */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Distribute space between left and right sections */
+  align-items: center; /* Vertically center all items */
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+  height: 80px; /* Fixed height */
+  box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+  width: 100%; /* Ensure the navbar takes up the full width */
+}
+
+/* Container for navigation links (align to left) */
+.nav-links-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center; /* Vertically align the links */
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  display: flex; /* This ensures that the links are vertically centered */
+  align-items: center;
+  height: 100%; /* Ensure the links take up the full height of the navbar */
+}
+
+/* Container for the profile dropdown (align to right) */
+.profile-dropdown-container {
+  display: flex;
+  align-items: center; /* Vertically center the profile button */
+  justify-content: flex-end; /* Align the profile button to the right */
+  height: 100%;
+}
+
+/* Profile Button (Sign In/Register or Avatar) */
+.profile-button {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: 0.5rem 1rem; /* Add padding for rectangular button when text is displayed */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the avatar/image and text */
+  font-size: 14px; /* Adjust font size for the button text */
+  border-radius: 5px; /* Rounded corners for rectangular button */
+  transition: all 0.3s ease; /* Smooth transition for shape change */
+  min-width: 120px; /* Ensure a minimum width to avoid layout shifting */
+  height: 40px; /* Ensure button has a fixed height */
+}
+
+/* When Avatar is displayed, make the button circular */
+.profile-button.avatar-visible {
+  height: 40px; /* Fixed height for circular button */
+  width: 40px; /* Fixed width for circular button */
+  border-radius: 50%; /* Make the button circular */
+  padding: 0; /* Remove padding to maintain circular shape */
+  min-width: 40px; /* Set the minimum width to avoid shifting */
+  border: none; /* Remove border when the avatar is visible */
+}
+
+/* Prevent showing border or outline on focus/hover for avatar button */
+.profile-button.avatar-visible:focus,
+.profile-button.avatar-visible:focus-visible,
+.profile-button.avatar-visible:hover {
+  border: none; /* Remove border on hover or focus */
+  outline: none; /* Remove outline for focused avatar button */
+}
+
+/* Avatar Image Styling */
+.avatar {
+  height: 100%; /* Ensure the avatar takes up the full height of the profile button */
+  width: 100%; /* Ensure the avatar takes up the full width of the profile button */
+  border-radius: 50%; /* Round the avatar to a perfect circle */
+  object-fit: cover; /* Ensure the image covers the area without stretching */
+  margin-right: 0.5rem; /* Space between the avatar and the button text */
+}
+
+/* Reverted Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  color: black;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 150px; /* Set a fixed width for the dropdown */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for the dropdown */
+}
+
+.dropdown-menu a {
+  color: black;
+  text-decoration: none;
+  padding: 0.5rem;
+  display: block;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f1f1f1;
+}
