@@ -1,0 +1,99 @@
+.confirmation-page {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f8f9fa;
+}
+
+.confirmation-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20em;
+}
+
+.confirmation-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 23em;
+    margin-bottom: 20px;
+}
+
+.confirmation-card h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.confirmation-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.confirmation-card ul li {
+    margin: 5px 0;
+}
+
+.confirm-button {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.confirm-button:hover {
+    background-color: #333;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.portal-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.portal-link:hover {
+    text-decoration: underline;
+}
+
+.google-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-right: 20em;
+}
+
+.place-holder-map {
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+}
+
