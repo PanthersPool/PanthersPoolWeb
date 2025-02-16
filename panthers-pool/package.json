@@ -12,6 +12,7 @@
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.6",
     "bootstrap": "^5.3.3",
+    "font-awesome": "^4.7.0",
     "panthers-pool": "file:",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.9",

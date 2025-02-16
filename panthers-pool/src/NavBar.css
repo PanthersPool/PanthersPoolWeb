@@ -1,114 +1,203 @@
-/* Ensure the navbar stays at a fixed size and items are centered */
+:root {
+  --blue: #22285f;
+}
+
+/* Container for navbar */
+.navbar-container {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  background-color: var(--blue);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* General navbar styles */
 .navbar {
   display: flex;
-  justify-content: space-between; /* Distribute space between left and right sections */
-  align-items: center; /* Vertically center all items */
-  padding: 1rem;
-  background-color: #333;
-  color: white;
-  height: 80px; /* Fixed height */
-  box-sizing: border-box; /* Include padding and borders in the element's total width and height */
-  width: 100%; /* Ensure the navbar takes up the full width */
-}
-
-/* Container for navigation links (align to left) */
-.nav-links-container {
-  display: flex;
-  gap: 1rem;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  height: 100%;
 }
 
-/* Navigation Links */
+/* Container for nav links */
+.nav-container {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  width: 100%; /* Ensures nav-container takes full width */
+}
+
+/* Navigation links */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1rem;
-  align-items: center; /* Vertically align the links */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
-  display: flex; /* This ensures that the links are vertically centered */
-  align-items: center;
-  height: 100%; /* Ensure the links take up the full height of the navbar */
+  font-size: 16px;
+  transition: color 0.3s;
 }
 
-/* Container for the profile dropdown (align to right) */
-.profile-dropdown-container {
-  display: flex;
-  align-items: center; /* Vertically center the profile button */
-  justify-content: flex-end; /* Align the profile button to the right */
-  height: 100%;
+.nav-links a:hover {
+  color: rgb(181, 181, 181);
 }
 
-/* Profile Button (Sign In/Register or Avatar) */
-.profile-button {
-  background-color: white;
-  color: black;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  padding: 0.5rem 1rem; /* Add padding for rectangular button when text is displayed */
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center the avatar/image and text */
-  font-size: 14px; /* Adjust font size for the button text */
-  border-radius: 5px; /* Rounded corners for rectangular button */
-  transition: all 0.3s ease; /* Smooth transition for shape change */
-  min-width: 120px; /* Ensure a minimum width to avoid layout shifting */
-  height: 40px; /* Ensure button has a fixed height */
-}
-
-/* When Avatar is displayed, make the button circular */
-.profile-button.avatar-visible {
-  height: 40px; /* Fixed height for circular button */
-  width: 40px; /* Fixed width for circular button */
-  border-radius: 50%; /* Make the button circular */
-  padding: 0; /* Remove padding to maintain circular shape */
-  min-width: 40px; /* Set the minimum width to avoid shifting */
-  border: none; /* Remove border when the avatar is visible */
-}
-
-/* Prevent showing border or outline on focus/hover for avatar button */
-.profile-button.avatar-visible:focus,
-.profile-button.avatar-visible:focus-visible,
-.profile-button.avatar-visible:hover {
-  border: none; /* Remove border on hover or focus */
-  outline: none; /* Remove outline for focused avatar button */
-}
-
-/* Avatar Image Styling */
-.avatar {
-  height: 100%; /* Ensure the avatar takes up the full height of the profile button */
-  width: 100%; /* Ensure the avatar takes up the full width of the profile button */
-  border-radius: 50%; /* Round the avatar to a perfect circle */
-  object-fit: cover; /* Ensure the image covers the area without stretching */
-  margin-right: 0.5rem; /* Space between the avatar and the button text */
-}
-
-/* Reverted Dropdown Menu */
-.dropdown-menu {
+/* Profile container */
+.profile-container {
   position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+}
+
+/* Profile dropdown */
+.profile-dropdown {
   top: 100%;
   right: 0;
-  background-color: white;
-  color: black;
-  padding: 0.5rem;
-  border-radius: 4px;
+}
+
+.profile-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 150px; /* Set a fixed width for the dropdown */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for the dropdown */
+  align-items: center;
 }
 
-.dropdown-menu a {
-  color: black;
-  text-decoration: none;
-  padding: 0.5rem;
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.avatar-visible {
+  background-color: transparent;
+}
+
+/* Dropdown menu */
+.profile-dropdown-menu {
+  position: absolute;
+  right: 0;
+  background-color: var(--blue);
+  border-radius: 8px;
+  width: 150px;
+  z-index: 100;
+}
+
+.profile-dropdown-menu a {
   display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
-.dropdown-menu a:hover {
-  background-color: #f1f1f1;
+/* Removed orange hover effect from dropdown items */
+.profile-dropdown-menu a:hover {
+  background-color: inherit;
+}
+
+/* Hamburger menu styles */
+.hamburger {
+  position: absolute;
+  top: 0.75rem;
+  left: 1rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 200; /* Ensure it's on top */
+  display: none; /* Hide dropdown by default when screen is large */
+}
+
+.hamburger i {
+  color: white;
+  font-size: 30px; /* Size of hamburger icon */
+}
+
+/* Toggle nav-links visibility on smaller screens */
+.nav-links.active {
+  display: block;
+  background-color: var(--blue); /* Set background color when nav is active */
+  border-radius: 5px; /* Optional, to match dropdown style */
+  padding: 10px 0; /* Padding to give some spacing around the links */
+}
+
+/* Navigation links in hamburger menu */
+.nav-links li {
+  margin: 10px 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 20px; /* Add padding for a better clickable area */
+  transition: background-color 0.3s;
+}
+
+/* Removed orange hover effect from hamburger menu links */
+.nav-links a:hover {
+  background-color: inherit;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0; /* No margin at the top */
+  }
+
+  .nav-links li {
+    margin: 1rem;
+  }
+
+  .hamburger {
+    display: flex; /* Show the hamburger icon on small screens */
+  }
+
+  .nav-links.active {
+    display: block;
+    position: absolute;
+    top: 4rem; /* Directly below the navbar */
+    left: 0;
+    width: 100%;
+    background-color: var(--blue);
+    z-index: 100;
+    margin-top: 0; /* No extra margin */
+  }
+
+  /* Remove margin and align dropdown directly under navbar */
+  .dropdown-menu {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: var(--blue);
+    border-radius: 5px;
+    z-index: 101; /* Ensure it's above other elements */
+  }
 }

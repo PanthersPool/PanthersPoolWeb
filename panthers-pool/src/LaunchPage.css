@@ -20,48 +20,8 @@ body {
   overflow: hidden; /* Prevent scrolling */
 }
 
-/* Navbar: full width, white background */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ffffff; /* White navbar */
-  padding: 1rem 5%;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-sizing: border-box;
-  border-bottom: 1px solid #ddd; /* Subtle bottom border */
-  flex-wrap: wrap;
-}
-
-/* Nav links on the left */
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-wrap: wrap;
-}
-
-.nav-links li a {
-  color: #333; /* Dark gray */
-  text-decoration: none;
-  font-size: 1.2em;
-  font-weight: 500;
-}
-
-/* Navbar buttons on the right */
-.nav-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.sign-in {
+/* Need Ride button */
+.need-ride {
   padding: 0.7em 1.5em;
   font-size: 1em;
   background-color: rgba(200, 200, 200, 0.3); /* Light gray transparent */
@@ -72,12 +32,12 @@ body {
   font-weight: 500;
 }
 
-.sign-in:hover {
+.need-ride:hover {
   background-color: rgba(200, 200, 200, 0.5); /* Slightly darker gray */
 }
 
-/* Sign Up button: Slightly blue (previously Sign In's color) */
-.sign-up {
+/* Will Drive button */
+.will-drive {
   padding: 0.7em 1.5em;
   font-size: 1em;
   background-color: #cce5ff; /* Light blue */
@@ -88,7 +48,7 @@ body {
   font-weight: 500;
 }
 
-.sign-up:hover {
+.will-drive:hover {
   background-color: #2e8bf5; /* Darker blue */
 }
 
@@ -115,26 +75,9 @@ body {
   align-items: center;
   flex-grow: 1;
   width: 100%;
+  max-width: 90%; /* Prevents buttons from reaching the very edges */
   flex-wrap: wrap;
   gap: 1rem; /* Adds space between the buttons */
-}
-
-/* Responsive Fix: Navbar and button behavior on small screens */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-
-  .nav-buttons {
-    margin-top: 1rem;
-    justify-content: center;
-  }
+  padding: 2rem; /* Adds uniform space around the buttons */
+  margin: 0 auto; /* Centers the content */
 }
