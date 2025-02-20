@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import mapImage from './assets/mapImage.png'
 import RideOption from './rideOption'
 
 export default function SelectRide() {
@@ -34,7 +33,6 @@ export default function SelectRide() {
             <div key = {trip.id} className="trip-container">
                 <div className="container">
                 <RideOption departure={trip.departure} destination={trip.destination} date={trip.date} time={trip.time} bags={trip.bags} price={trip.price} setActiveRide={setActiveRide} id={trip.id}/>
-                <img src={mapImage} width={250} height={250}/>
                 </div>
             </div>
         ))}     

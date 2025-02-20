@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import mapImage from './assets/mapImage.png'
 import './App.css'
 
 function MapPage() {
@@ -37,7 +36,6 @@ function MapPage() {
             </div>
         </div>
             <div className = "image-container">
-              <img src={mapImage} width={300} height={300} />
               <h2>Suggested Price: ${price * seats}</h2>
             </div>
             
