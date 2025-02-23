@@ -11,6 +11,8 @@ import SelectRide from "./SelectRide"
 import RegisterPage from "./RegisterPage"
 import "./App.css";
 
+/* Hello world */
+
 function App() {
   return (
     <Router>
