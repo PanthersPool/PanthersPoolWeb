@@ -1,0 +1,118 @@
+body {
+  background-color: #f8f9fa; /* Light background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px; /* Adjust width for side-by-side layout */
+  text-align: left;
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Pushes form and image apart */
+  gap: 40px; /* Adds spacing between form and image */
+}
+
+.image-container {
+  flex: 0 0 auto; /* Ensures the image maintains its size */
+  text-align: left;
+}
+
+.register-container{
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  align-items:center;
+  flex: 1
+}
+
+.form-group{
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.trip-container {
+  gap:40px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: black;
+}
+
+label{
+  color:black;
+}
+
+h2 {
+  color:black;
+}
+
+h3 {
+  color:black;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+p {
+  color: black;
+}
+
+button {
+  width: 100%;
+  background-color: #2c3e50; /* Dark blue */
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #1a252f;
+}
+
+.terms {
+  font-size: 12px;
+  color: #666;
+  margin-top: 15px;
+}
+
+.form-container {
+  flex: 1; /* Allows the form to take available space */
+  max-width: 400px; /* Adjust form width */
+}
+
+.image-container {
+  flex: 1; /* Allows the image container to grow */
+  text-align: center; /* Align image to the right */
+}
+
+.image-container img {
+  max-width: 100%; /* Ensures responsiveness */
+  height: auto;
+  border-radius: 10px; /* Optional styling */
+}
