@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./DriverSignUp.css";
+import "./NavBar.css";
+import NavBar from "./NavBar.jsx";
 
 function DriverSignup() {
     const [formData, setFormData] = useState({
@@ -31,6 +33,7 @@ function DriverSignup() {
 
     return (
         <div className="driver-signup">
+            < NavBar />
             <div className="signup-box">
                 <div className="basic-info-container">
                     <h2 className="signup-title">Driver Sign Up →</h2>

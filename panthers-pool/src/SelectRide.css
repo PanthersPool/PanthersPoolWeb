@@ -1,0 +1,12 @@
+.select-ride-page {
+    margin-top: 6em;
+}
+
+.ride-options {
+    height: 80vh;
+    width: 80vh;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

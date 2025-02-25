@@ -19,6 +19,8 @@ body {
   align-items: center; /* Align items vertically */
   justify-content: space-between; /* Pushes form and image apart */
   gap: 40px; /* Adds spacing between form and image */
+  margin-top: 8em;
+  overflow: scroll;
 }
 
 .image-container {

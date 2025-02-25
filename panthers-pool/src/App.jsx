@@ -10,6 +10,7 @@ import MapPage from "./MapPage"
 import SelectRide from "./SelectRide"
 import RegisterPage from "./RegisterPage"
 import "./App.css";
+import RideOption from "./rideOption.jsx";
 
 function App() {
   return (
@@ -17,11 +18,13 @@ function App() {
       <Routes>
         <Route path="/" element={<LaunchPage />} />
         <Route path="/find-ride" element={<FindRide />} />
-        <Route path="/driverSignUp" element={<DriverSignUp />} />
+        <Route path="/driver-sign-up" element={<DriverSignUp />} />
         <Route path="/confirmation" element={<ConfirmationPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/map-page" element={<MapPage/>} />
         <Route path="/select-ride" element={<SelectRide />} />
+        <Route path="/ride-options" element={<RideOption />} />
+
       </Routes>
     </Router>
   );

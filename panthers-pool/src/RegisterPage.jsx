@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import RegisterImage from './assets/registerImage.png'
+// import RegisterImage from './assets/registerImage.png'
 
 export default function RegisterPage() {
     const [firstName, setFirstName] = useState("")

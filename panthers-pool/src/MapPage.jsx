@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import mapImage from './assets/mapImage.png'
 import './App.css'
+import NaveBar from './NavBar'
 
 function MapPage() {
   const [departure, setDeparture] = useState("")
@@ -16,6 +17,7 @@ function MapPage() {
 
   return (
     <>
+        <NaveBar />
       <div className="container">
         <div className = "form-container">
         <h1>Turn Your Commute Into Cash!</h1>

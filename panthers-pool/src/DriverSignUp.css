@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     background-color: #f8f9fa;
+    overflow: scroll;
 }
 
 .signup-box {
@@ -17,6 +18,7 @@
     width: 80%;
     display: flex;
     justify-content: space-around;
+    margin-top: 8em;
 }
 
 .basic-info-container {

@@ -2,13 +2,23 @@ import React from "react";
 import NavBar from "./NavBar";
 import "./NavBar.css";
 import "./FindRide.css";
+import { useNavigate } from "react-router-dom";
 
 const FindRide = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Optionally, process form data here
+
+    navigate("/select-ride");
+  };
+
   return (
     <div>
       <NavBar />
       <div className="form-container">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="departure">Departure:</label>
             <input type="text" id="departure" name="departure" />

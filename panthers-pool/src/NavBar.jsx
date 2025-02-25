@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -51,10 +52,16 @@ const NavBar = () => {
         <div className="nav-container">
           <ul className={`nav-links ${isNavActive ? "active" : ""}`}>
             <li>
-              <a href="#community">Community</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="#my-trips">My Trips</a>
+              <Link to="/find-ride">Search for Rides</Link>
+            </li>
+            <li>
+              <Link to="/driver-sign-up">Be a Driver</Link>
+            </li>
+            <li>
+              <Link to="/map-page">Map</Link>
             </li>
             <li>
               <a href="#contact">Contact</a>
