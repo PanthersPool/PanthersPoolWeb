@@ -21,7 +21,7 @@ function ConfirmationPage() {
 
                 <div className="footer">
                     <p><strong>Ride Together, Thrive Together.</strong></p>
-                    <a href="/" className="portal-link">Portal page →</a>
+                    <a href="/" className="portal-link">Home page →</a>
                 </div>
             </div>
             <div className="google-map">

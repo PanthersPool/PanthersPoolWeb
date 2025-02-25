@@ -25,7 +25,6 @@ export default function SelectRide() {
         price: 60
     }
     ]
-
   
  
     return (
