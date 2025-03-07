@@ -11,6 +11,7 @@ import SelectRide from "./SelectRide"
 import RegisterPage from "./RegisterPage"
 import "./App.css";
 import RideOption from "./rideOption.jsx";
+import ProfilePage from "./ProfilePage.jsx";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/map-page" element={<MapPage/>} />
         <Route path="/select-ride" element={<SelectRide />} />
         <Route path="/ride-options" element={<RideOption />} />
+        <Route path="/profile-page" element={<ProfilePage />} />
 
       </Routes>
     </Router>
