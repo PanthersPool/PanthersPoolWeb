@@ -96,7 +96,7 @@ const NavBar = () => {
             )}
             {isLoggedIn && isDropdownOpen && (
               <div className="profile-dropdown-menu">
-                <a href="#profile">Profile</a>
+                <a href="/profile-page">Profile</a>
                 <a href="#settings">Settings</a>
                 <a href="#logout" onClick={handleSignOut}>
                   Log Out

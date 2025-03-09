@@ -14,7 +14,7 @@ const LaunchPage = () => {
         <button className="need-ride" onClick={() => navigate("/find-ride")}>
           I need a ride
         </button>
-        <button className="will-drive">I am driving</button>
+        <button className="will-drive" onClick={() => navigate("/map-page")}>I am driving</button>
       </div>
     </div>
   );

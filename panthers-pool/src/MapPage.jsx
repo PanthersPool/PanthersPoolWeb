@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import mapImage from './assets/mapImage.png'
-import './App.css'
+import './MapPage.css'
 import NaveBar from './NavBar'
 
 function MapPage() {

@@ -1,5 +1,4 @@
 /* src/DriverSignUp.css */
-
 .driver-signup {
     height: 100vh;
     width: 100vw;
@@ -8,6 +7,7 @@
     align-items: center;
     background-color: #f8f9fa;
     overflow: scroll;
+    margin-top: 4rem;
 }
 
 .signup-box {
@@ -18,7 +18,7 @@
     width: 80%;
     display: flex;
     justify-content: space-around;
-    margin-top: 8em;
+    margin-top: 10rem;
 }
 
 .basic-info-container {
@@ -96,4 +96,46 @@
 
 .submit-button:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 1024px) {
+    .signup-box {
+        width: 90%;
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 768px) {
+    .signup-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 90%;
+        margin-top: 50rem;
+    }
+
+    .basic-info-container, .question-and-upload {
+        width: 90%; /* Makes form elements full width */
+        min-width: unset; /* Allow full width on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-box {
+        width: 100%;
+        padding: 15px;
+        box-shadow: none;
+    }
+
+    .signup-title {
+        font-size: 20px;
+    }
+
+    .input-field, .select-field {
+        font-size: 14px;
+    }
+
+    .submit-button {
+        font-size: 16px;
+    }
 }
