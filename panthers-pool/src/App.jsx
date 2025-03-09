@@ -12,12 +12,14 @@ import RegisterPage from "./RegisterPage"
 import "./App.css";
 import RideOption from "./rideOption.jsx";
 import ProfilePage from "./ProfilePage.jsx";
+import LoginPage from "./LoginPage.jsx"
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LaunchPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/find-ride" element={<FindRide />} />
         <Route path="/driver-sign-up" element={<DriverSignUp />} />
         <Route path="/confirmation" element={<ConfirmationPage />} />

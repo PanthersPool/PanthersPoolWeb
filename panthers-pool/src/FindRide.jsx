@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const FindRide = () => {
   const navigate = useNavigate();
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // Optionally, process form data here
