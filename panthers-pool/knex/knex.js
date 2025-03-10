@@ -1,5 +1,5 @@
 import createKnex from "knex";
-import knexConfing from "../knexfile";
+import knexConfing from "../../knexfile.js";
 
 const globalForKnex = global;
 

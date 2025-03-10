@@ -17,10 +17,10 @@ export default function profilePage({ }) {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [password, setPassword] = useState("");
-    const [name] = useState("Name");
     const [carColor, setCarColor] = useState("");
     const [carMake, setCarMake] = useState("");
     const [license, setLicense]= useState("");
+
 
     const rides = [{ driver: "Will", pickup: "Battel", dropoff: "ADK", rider: "Mike", date: "12/01/24" },
     { driver: "Josef", pickup: "Atwater", dropoff: "Burly", rider: "Mike", date: "12/01/24" },

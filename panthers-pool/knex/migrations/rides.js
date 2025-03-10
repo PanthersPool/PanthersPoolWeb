@@ -9,6 +9,7 @@ exports.up = function (knex) {
         table.boolean("luggageSpace");
         table.boolean("atLeastOnePassenger");
         table.boolean("Completed");
+        table.specificType('riderID', 'integer[]');
     })
 };
 exports.down = function (knex) {

@@ -7,34 +7,15 @@ const { DATABASE_URL } = loadEnvConfig("./", dev).combinedEnv;
 
 const defaultSettings = {
   migrations: {
-    directory: "./knex/migrations",
+    directory: "./panthers-pool/knex/migrations",
   },
   seeds: {
-    directory: "./knex/seeds",
+    directory: "./panthers-pool/knex/seeds",
   },
 };
 
 module.exports = {
-  test: {
-    ...defaultSettings,
-    client: "sqlite3",
-    connection: ":memory:",
-    useNullAsDefault: true,
-    seeds: {
-      directory: "./knex/seeds",
-    },
-  },
-  /*
-
-  development: {
-    ...defaultSettings,
-    client: "sqlite3",
-    connection: {
-      filename: "./middzillow.db",
-    },
-    useNullAsDefault: true,
-  },
-  */
+ /*
   development: {
     ...defaultSettings,
     client: "pg",
@@ -42,7 +23,17 @@ module.exports = {
       connectionString: DATABASE_URL,
     },
   },
+*/
 
+  development: {
+    ...defaultSettings,
+    client: "sqlite3",
+    connection: {
+      filename: "./panthers-pool.db",
+    },
+    useNullAsDefault: true,
+  },
+  /*
   production: {
     ...defaultSettings,
     client: "pg",
@@ -51,4 +42,5 @@ module.exports = {
       ssl: true,
     },
   },
+  */
 };
