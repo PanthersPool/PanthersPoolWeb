@@ -7,24 +7,7 @@ import "./SelectRide.css";
 export default function SelectRide() {
     const [activeRide, setActiveRide] = useState()
     const [rides, setRides] = useState()
-
-    useEffect(() => {
-        const fetchRides = async () => {
-            try{
-                const response = await fetch('/api/ride')
-
-                if (response.ok){
-                    const data = await response.json()
-                    setRides(data)
-                }
-            } catch (error) {
-                console.error("Something went wrong", error)
-            }
-        }
-        fetchRides()
-    },[])
   
- 
     return (
     <>
         <NavBar />

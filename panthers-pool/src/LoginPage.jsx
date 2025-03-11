@@ -1,27 +1,25 @@
 import { useNavigate } from 'react-router-dom'
+import './LoginPage.css'
 
 export default function LoginPage () {
     const navigate = useNavigate()
 
     return (
-        <div>
-            <div>
-            <h1>Start Riding</h1>
-            <div>
-                <button>Sign In</button>
-            </div>
-            <div>
-                <a>Not signed up yet?</a>
-                <div>
-                    <p>Sign up to be a driver</p>
-                    <button onClick={() => navigate('/driver-sign-up')}>Create Driver Account</button>
+        <div className="signIn-container">
+            <div className="signIn-box">
+                <h1>Start Riding</h1>
+                <div className="button-group">
+                    <button>Driver Sign-In</button>
+                    <button>Rider Sign-In</button>
                 </div>
-                <div>
-                    <p>Sign up to be a rider</p>
+            </div>
+
+            <div className="createAccount-box">
+                <h2>Not signed up yet?</h2>
+                <div className="button-group">
+                    <button onClick={() => navigate('/driver-sign-up')}>Create Driver Account</button>
                     <button onClick={() => navigate('/register')}>Create Rider Account</button>
                 </div>
-                
-            </div>
             </div>
         </div>
         

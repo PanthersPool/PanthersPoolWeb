@@ -15,10 +15,13 @@ import ProfilePage from "./ProfilePage.jsx";
 import LoginPage from "./LoginPage.jsx"
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
+
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LaunchPage />} />
+        <Route path="/" element={<LaunchPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/find-ride" element={<FindRide />} />
         <Route path="/driver-sign-up" element={<DriverSignUp />} />

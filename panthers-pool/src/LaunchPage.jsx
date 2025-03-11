@@ -4,17 +4,17 @@ import NavBar from "./NavBar";
 import "./LaunchPage.css";
 import "./NavBar.css";
 
-const LaunchPage = () => {
+const LaunchPage = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
 
   return (
     <div className="launch-page">
-      <NavBar />
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <div className="center-buttons">
-        <button className="need-ride" onClick={() => navigate("/find-ride")}>
+        <button className="need-ride" onClick={() => (isLoggedIn) ? navigate("/find-ride") : navigate('/login')}>
           I need a ride
         </button>
-        <button className="will-drive" onClick={() => navigate("/map-page")}>I am driving</button>
+        <button className="will-drive" onClick={() => (isLoggedIn) ? navigate("/map-page") : navigate('/login')}>I am driving</button>
       </div>
     </div>
   );
