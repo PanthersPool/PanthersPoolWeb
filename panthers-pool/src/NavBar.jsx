@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import "./NavBar.css";
 
-const NavBar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
+const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isNavActive, setIsNavActive] = useState(false); // Track hamburger menu state
+  const navigate = useNavigate()
 
   // Toggle dropdown visibility
   const toggleDropdown = () => {

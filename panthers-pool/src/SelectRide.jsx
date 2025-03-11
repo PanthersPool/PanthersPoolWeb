@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import mapImage from './assets/mapImage.png'
 import RideOption from './rideOption'
 import NavBar from "./NavBar.jsx";
@@ -6,27 +6,8 @@ import "./SelectRide.css";
 
 export default function SelectRide() {
     const [activeRide, setActiveRide] = useState()
-    const mockTrips = [ {
-        id: 0,
-        departure: 'ADK',
-        destination: "Burlington",
-        date: 'March 5',
-        time: "9:00-11:00 AM",
-        bags: "One carry-on",
-        price: 30
-    },
-    {
-        id: 1,
-        departure: 'ADK',
-        destination: "Burlington",
-        date: 'March 5',
-        time: "11:00 AM-1:00 PM",
-        bags: "Two Suitcases",
-        price: 60
-    }
-    ]
+    const [rides, setRides] = useState()
   
- 
     return (
     <>
         <NavBar />
