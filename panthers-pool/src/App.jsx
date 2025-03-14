@@ -16,6 +16,8 @@ import LoginPage from "./LoginPage.jsx"
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
+  const [activeRide, setActiveRide] = useState()
+  const [confirmedRide, setConfirmedRide] = useState()
 
 
   return (
@@ -25,12 +27,12 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/find-ride" element={<FindRide />} />
         <Route path="/driver-sign-up" element={<DriverSignUp />} />
-        <Route path="/confirmation" element={<ConfirmationPage />} />
+        <Route path="/confirmation" element={<ConfirmationPage activeRide={activeRide} setConfirmedRide={setConfirmedRide}/>} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/map-page" element={<MapPage/>} />
-        <Route path="/select-ride" element={<SelectRide />} />
+        <Route path="/map-page" element={<MapPage setConfirmedRide={setConfirmedRide}/>} />
+        <Route path="/select-ride" element={<SelectRide setActiveRide = {setActiveRide}/>} />
         <Route path="/ride-options" element={<RideOption />} />
-        <Route path="/profile-page" element={<ProfilePage />} />
+        <Route path="/profile-page" element={<ProfilePage confirmedRide={confirmedRide} setConfirmedRide={setConfirmedRide}/>} />
 
       </Routes>
     </Router>

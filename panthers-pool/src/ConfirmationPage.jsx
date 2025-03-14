@@ -1,22 +1,31 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ConfirmationPage.css";
 import placeholderMap from "./assets/placeholder1.png";
 
-function ConfirmationPage() {
+function ConfirmationPage( {activeRide, setConfirmedRide}) {
+
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+        setConfirmedRide(activeRide)
+        navigate('/profile-page')
+
+    }
+
     return (
         <div className="confirmation-page">
             <div className="confirmation-container">
                 <div className="confirmation-card">
                     <h2>Confirmation</h2>
-                    <p className="price">$<strong>30</strong></p>
+                    <p className="price">$<strong>{`${activeRide.price}`}</strong></p>
                     <ul>
-                        <li>ADK to Burlington Airport</li>
-                        <li>March 9</li>
-                        <li>11:00 AM</li>
+                        <li>{`ADK to ${activeRide.destination}`}</li>
+                        <li>{`${activeRide.date}, ${activeRide.time}`}</li>
                         <li>1 Passenger</li>
-                        <li>1 Large Suitcase</li>
+                        <li>{`${activeRide.bags} bag`}</li>
                     </ul>
-                    <button className="confirm-button">Confirm</button>
+                    <button className="confirm-button" onClick={() => handleClick()}>Confirm</button>
                 </div>
 
                 <div className="footer">
