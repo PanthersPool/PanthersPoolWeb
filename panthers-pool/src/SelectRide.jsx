@@ -4,9 +4,20 @@ import RideOption from './rideOption'
 import NavBar from "./NavBar.jsx";
 import "./SelectRide.css";
 
-export default function SelectRide() {
-    const [activeRide, setActiveRide] = useState()
-    const [rides, setRides] = useState()
+export default function SelectRide({ setActiveRide }) {
+    const rides =[
+        {
+            id: 0, 
+            departure: "ADK",
+            destination: "Burlington",
+            date: "March 5",
+            time: "9:00AM",
+            bags: 1,
+            price: 50,
+            seats: 6
+        }
+    ]
+
   
     return (
     <>
@@ -15,10 +26,10 @@ export default function SelectRide() {
         <h1>Find similar trips</h1>
 
         <div className="ride-options">
-        {mockTrips.map((trip) => (
+        {rides.map((trip) => (
             <div key = {trip.id} className="trip-container">
                 <div className="container">
-                <RideOption departure={trip.departure} destination={trip.destination} date={trip.date} time={trip.time} bags={trip.bags} price={trip.price} setActiveRide={setActiveRide} id={trip.id}/>
+                <RideOption departure={trip.departure} destination={trip.destination} date={trip.date} time={trip.time} bags={trip.bags} price={trip.price} seats={trip.seats} setActiveRide={setActiveRide} id={trip.id}/>
                 <img src={mapImage} width={250} height={250}/>
                 </div>
             </div>

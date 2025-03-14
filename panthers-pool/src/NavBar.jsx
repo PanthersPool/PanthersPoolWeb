@@ -55,13 +55,13 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/find-ride">Search for Rides</Link>
+              <Link to={(isLoggedIn) ? "/find-ride" : "/login"}>Search for Rides</Link>
             </li>
             <li>
               <Link to="/driver-sign-up">Be a Driver</Link>
             </li>
             <li>
-              <Link to="/map-page">Map</Link>
+              <Link to={(isLoggedIn) ? "/map-page" : "/login"}>Map</Link>
             </li>
             <li>
               <a href="#contact">Contact</a>
