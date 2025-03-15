@@ -1,0 +1,78 @@
+/* Apply background color to the entire page */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5; /* Light grayish white */
+  overflow: hidden; /* Prevents scrolling */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container for the entire content */
+.signIn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem; /* Adds spacing between the bubbles */
+}
+
+/* General styling for sign-in and account creation bubbles */
+.signIn-box, .createAccount-box {
+  background: #eaeaea; /* Light gray background */
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+  width: 300px;
+  text-align: center;
+}
+
+/* Button container to keep buttons stacked */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Sign-in buttons */
+.signIn-box .button {
+  padding: 0.7em 1.5em;
+  font-size: 1em;
+  background-color: #2e3b4e; /* Dark grayish blue */
+  color: white;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.signIn-box .button:hover {
+  background-color: #1f2937; /* Darker shade */
+}
+
+/* Account creation buttons */
+.createAccount-box .button {
+  padding: 0.7em 1.5em;
+  font-size: 1em;
+  background-color: #2e3b4e; /* Dark grayish blue */
+  color: white;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.createAccount-box .button:hover {
+  background-color: #1f2937; /* Darker shade */
+}
+
+/* Heading styles */
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5em;
+  color: #333;
+  font-weight: bold;
+}

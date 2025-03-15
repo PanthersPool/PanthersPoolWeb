@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import "./NavBar.css";
 
-const NavBar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
+const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isNavActive, setIsNavActive] = useState(false); // Track hamburger menu state
+  const navigate = useNavigate()
 
   // Toggle dropdown visibility
   const toggleDropdown = () => {
@@ -55,13 +55,13 @@ const NavBar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/find-ride">Search for Rides</Link>
+              <Link to={(isLoggedIn) ? "/find-ride" : "/login"}>Search for Rides</Link>
             </li>
             <li>
               <Link to="/driver-sign-up">Be a Driver</Link>
             </li>
             <li>
-              <Link to="/map-page">Map</Link>
+              <Link to={(isLoggedIn) ? "/map-page" : "/login"}>Map</Link>
             </li>
             <li>
               <a href="#contact">Contact</a>
@@ -96,7 +96,7 @@ const NavBar = () => {
             )}
             {isLoggedIn && isDropdownOpen && (
               <div className="profile-dropdown-menu">
-                <a href="#profile">Profile</a>
+                <a href="/profile-page">Profile</a>
                 <a href="#settings">Settings</a>
                 <a href="#logout" onClick={handleSignOut}>
                   Log Out

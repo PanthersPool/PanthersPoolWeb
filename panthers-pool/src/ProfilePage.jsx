@@ -5,7 +5,7 @@ import NavBar from "./NavBar.jsx";
 import "./ProfilePage.css";
 import ProfilePicture from "./assets/ProfilePic.webp";
 
-export default function profilePage({ }) {
+export default function profilePage({ confirmedRide, setConfirmedRide }) {
 
     const [emailChange, setEmailChange] = useState(true);
     const [phoneChange, setPhoneChange] = useState(true);
@@ -57,7 +57,11 @@ export default function profilePage({ }) {
     }
 
 
-    const isDriver = true; // Just a placeholder object will have -> isDriver? true or false
+    const isDriver = false; // Just a placeholder object will have -> isDriver? true or false
+
+    const handleClick = () => {
+        setConfirmedRide(null)
+    }
     return (
         <div>
             <NavBar />
@@ -65,6 +69,27 @@ export default function profilePage({ }) {
                 <div>
                     <img src={ProfilePicture} width={200} height={200} />
                 </div>
+                {
+                    (confirmedRide) ? 
+                
+                <div>
+                    <h1>Confirmed Ride:</h1>
+                    <div>
+                        <p>{`${confirmedRide.departure}`}</p>
+                        <p>{`${confirmedRide.destination}`}</p>
+                        <p>{`${confirmedRide.date}`}</p>
+                        <p>{`${confirmedRide.time}`}</p>
+                        <p>{`${confirmedRide.bags}`}</p>
+                        <p>{`$${confirmedRide.price}`}</p>
+                    </div>
+                    <button onClick={() => handleClick()}>Cancel Ride</button>
+                </div>
+                :
+                <div>
+                    <h1>No Rides Confirmed</h1>
+                </div>
+
+                }
 
                 <div>
                     <h1> Name </h1>
