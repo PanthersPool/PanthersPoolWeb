@@ -5,6 +5,8 @@ import NavBar from "./NavBar.jsx";
 import "./SelectRide.css";
 
 export default function SelectRide({ setActiveRide }) {
+
+    /*
     const rides =[
         {
             id: 0, 
@@ -17,6 +19,26 @@ export default function SelectRide({ setActiveRide }) {
             seats: 6
         }
     ]
+    */
+
+   const [rides, setRides] = useState([]);
+
+    useEffect(() => {
+        const fetchRides = async () => {
+            try {
+                const response = await fetch("/api/allRides");
+                if(response.ok){
+                    const rides = await response.json();
+                    setRides(rides);
+                }
+            } catch (error) {
+                console.error("Error fetching rides", error);
+            }
+        }
+        fetchRides();
+    }, [])
+
+
 
   
     return (

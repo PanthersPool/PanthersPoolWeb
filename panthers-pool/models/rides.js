@@ -1,9 +1,9 @@
 import BaseModel from "./BaseModel";
 
-export default class rider extends BaseModel {
+export default class rides extends BaseModel {
   // Table name is the only required property.
   static get tableName() {
-    return "rider";
+    return "rides";
   }
 
   // Objection.js assumes primary key is `id` by default

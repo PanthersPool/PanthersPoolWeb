@@ -16,10 +16,20 @@ import LoginPage from "./LoginPage.jsx"
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
-  const [activeRide, setActiveRide] = useState()
+  const [activeRide, setActiveRide] = useState(ride)
   const [confirmedRide, setConfirmedRide] = useState()
 
-
+const ride =  { 
+  "rideID": 2,
+  "driverID": 2,
+  "destination": "London",
+  "departureTime": "2025-06-08T12:00:00",
+  "spotsRemaining": 1,
+  "luggageSpace": true,
+  "atLeastOnePassenger": false,
+  "completed": false,
+  "riderID": []
+}
   return (
     <Router>
       <Routes>

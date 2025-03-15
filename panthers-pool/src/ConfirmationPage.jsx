@@ -13,6 +13,8 @@ function ConfirmationPage( {activeRide, setConfirmedRide}) {
 
     }
 
+    
+
     return (
         <div className="confirmation-page">
             <div className="confirmation-container">
