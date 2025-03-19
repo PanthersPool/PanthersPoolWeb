@@ -1,0 +1,47 @@
+[
+    {
+        "riderID": 1,
+        "firstName": "Bob",
+        "lastName": "Smith",
+        "age": 20,
+        "phone": "123-456-7890",
+        "email": "hello@me.com"
+    },
+
+    {
+        "riderID": 2,
+        "firstName": "Joe",
+        "lastName": "Larry",
+        "age": 22,
+        "phone": "123-444-7890",
+        "email": "helloworld@me.com"
+    },
+
+    {
+        "riderID": 3,
+        "firstName": "Joe",
+        "lastName": "Larry",
+        "age": 22,
+        "phone": "123-444-7890",
+        "email": "helloworld@me.com"
+    },
+
+    {
+        "riderID": 4,
+        "firstName": "Mary",
+        "lastName": "Barry",
+        "age": 19,
+        "phone": "123-444-777",
+        "email": "helloworld@icloud.com"
+    },
+
+    {
+        "riderID": 5,
+        "firstName": "Jake",
+        "lastName": "Baker",
+        "age": 121,
+        "phone": "111-444-777",
+        "email": "email@icloud.com"
+    }
+
+]

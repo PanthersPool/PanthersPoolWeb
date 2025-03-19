@@ -1,0 +1,62 @@
+[
+    {
+        "driverID": 1,
+        "firstName": "Will",
+        "lastName": "Zambito",
+        "age": 21,
+        "phone": "518-683-8666",
+        "email": "wzambito@middlebury.edu",
+        "carMake": "Ford",
+        "carColor": "Black",
+        "carPlate": "MZH 1Q3",
+        "profilePicture": ""
+    },
+    {
+        "driverID": 2,
+        "firstName": "Jackson",
+        "lastName": "Stone",
+        "age": 20,
+        "phone": "515894666",
+        "email": "jstone@middlebury.edu",
+        "carMake": "Dodge",
+        "carColor": "white",
+        "carPlate": "AAA 1Q3",
+        "profilePicture": ""
+    },
+    {
+        "driverID": 3,
+        "firstName": "Owen",
+        "lastName": "Park",
+        "age": 22,
+        "phone": "111-683-8666",
+        "email": "opark@middlebury.edu",
+        "carMake": "Mazda",
+        "carColor": "Pink",
+        "carPlate": "222 1Q3",
+        "profilePicture": ""
+    },
+    {
+        "driverID": 4,
+        "firstName": "Josef",
+        "lastName": "Liam",
+        "age": 23,
+        "phone": "999-683-8666",
+        "email": "jliam@middlebury.edu",
+        "carMake": "Honda",
+        "carColor": "purple",
+        "carPlate": "FFF 1Q3",
+        "profilePicture": ""
+    },
+    {
+        "driverID": 5,
+        "firstName": "Zeyi",
+        "lastName": "Zeyiiii",
+        "age": 99,
+        "phone": "777-683-8666",
+        "email": "zeyi@middlebury.edu",
+        "carMake": "Mercedes",
+        "carColor": "LightBlue",
+        "carPlate": "ZZZ 1Q3",
+        "profilePicture": ""
+    }
+]
