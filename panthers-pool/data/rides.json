@@ -2,6 +2,7 @@
     { 
         "rideID": 1,
         "driverID": 1,
+        "origin": "Middlebury",
         "destination": "Boston",
         "departureTime": "2025-03-08T12:00:00",
         "spotsRemaining": 2,
@@ -14,6 +15,7 @@
     { 
         "rideID": 2,
         "driverID": 2,
+        "origin": "Manchester",
         "destination": "London",
         "departureTime": "2025-06-08T12:00:00",
         "spotsRemaining": 1,
@@ -26,6 +28,7 @@
     { 
         "rideID": 3,
         "driverID": 1,
+        "origin": "Paris",
         "destination": "Monaco",
         "departureTime": "2025-03-02T12:00:00",
         "spotsRemaining": 0,
@@ -38,6 +41,7 @@
     { 
         "rideID": 4,
         "driverID": 4,
+        "origin": "Albany",
         "destination": "New York",
         "departureTime": "2025-03-08T12:30:30",
         "spotsRemaining": 1,
@@ -50,6 +54,7 @@
     { 
         "rideID": 5,
         "driverID": 5,
+        "origin": "Green Bay",
         "destination": "Chicago",
         "departureTime": "2025-03-08T11:34:00",
         "spotsRemaining": 1,

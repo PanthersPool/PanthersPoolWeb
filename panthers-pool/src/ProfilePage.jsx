@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar.jsx";
 import "./ProfilePage.css";
 import ProfilePicture from "./assets/ProfilePic.webp";
@@ -10,7 +10,6 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
     // Used so the user can change the values
     const [emailChange, setEmailChange] = useState(true);
     const [phoneChange, setPhoneChange] = useState(true);
-    const [passwordChange, setPasswordChange] = useState(true);
     const [carMakeChange, setCarMakeChange] = useState(true);
     const [carColorChange, setCarColorChange] = useState(true);
     const [licenseChange, setLicenseChange] = useState(true);
@@ -24,78 +23,63 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
     const [carMake, setCarMake] = useState("");
     const [carPlate, setCarPlate] = useState("");
 
-    const [pastRides, setPastRides] = useState([]);
-/*
-    const rides = [{ driver: "Will", pickup: "Battel", dropoff: "ADK", rider: "Mike", date: "12/01/24" },
-    { driver: "Josef", pickup: "Atwater", dropoff: "Burly", rider: "Mike", date: "12/01/24" },
-    { driver: "Owen", pickup: "Stew", dropoff: "New York", rider: "Mike", date: "12/01/24" },
-    { driver: "Zeyi", pickup: "Proctor", dropoff: "Boston", rider: "Mike", date: "12/01/24" },
-    { driver: "Jackson", pickup: "Mili", dropoff: "14 old Chapel", rider: "Mike", date: "12/01/24" },
-    ];
-    */
-    const isDriver = true; // Just a placeholder object will have -> isDriver? true or false
-    const id = 1;
+    const isDriver = false; // Just a placeholder object will have -> isDriver? true or false
+    const id = 2;
+
+    /*
+    const newDate = new Date(confirmedRide.date);
+
+    const formattedDate = newDate.toLocaleDateString('en-US', {
+        month: 'long',
+        day: '2-digit',
+        year: 'numeric'
+    })
+
+    const formattedTime = newDate.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+    })
+        */
+
     useEffect(() => {
         const fetchProfile = async () => {
-            
             if (isDriver) {
                 try {
-                    const response = await fetch(`/api/driver?driverID=${id}`);
-                   console.log("Driver Info");
-                    console.log(response);
+                    const response = await fetch(`http://localhost:3000/api/driver?driverID=${id}`);
                     if (response.ok) {
                         const profile = await response.json();
-                        setFirstName(profile.firstName);
-                        setLastName(profile.lastName)
-                        setEmail(profile.email);
-                        setPhone(profile.phone);
-                        setCarColor(profile.carColor);
-                        setCarMake(profile.carMake);
-                        setCarPlate(profile.carPlate);
+                        setFirstName(profile[0].firstName);
+                        setLastName(profile[0].lastName)
+                        setEmail(profile[0].email);
+                        setPhone(profile[0].phone);
+                        setCarColor(profile[0].carColor);
+                        setCarMake(profile[0].carMake);
+                        setCarPlate(profile[0].carPlate);
                     }
                 } catch (error) {
                     console.error("Error fetching driver", error);
                 }
-                try{
-                    const response = await fetch (`api/rides?driverID=${id}`);
-                    console.log("PastRides");
-                    console.log(response);
-                    if (response.ok){
-                        const pastRides = await response.json();
-                        setPastRides(pastRides);
-                    }
-                } catch (error) {
-                    console.error("Error fetching pastRides", error);
-                }
             } 
             if (!isDriver) {
                 try {
-                    const response = await fetch(`/api/profilePage/rider?riderID=${id}`);
+                    const response = await fetch(`http://localhost:3000/api/rider?riderID=${id}`);
                     if (response.ok) {
                         const profile = await response.json();
-                        setFirstName(profile.firstName);
-                        setLastName(profile.lastName)
-                        setEmail(profile.email);
-                        setPhone(profile.phone)
+                        setFirstName(profile[0].firstName);
+                        setLastName(profile[0].lastName)
+                        setEmail(profile[0].email);
+                        setPhone(profile[0].phone)
                     }
                 } catch (error) {
                     console.error("Error fetching rider", error);
-                }
-                try{
-                    const response = await fetch (`api/rides?riderID=${id}`);
-                    if (response.ok){
-                        const pastRides = await response.json();
-                        setPastRides(pastRides);
-                    }
-                } catch (error) {
-                    console.error("Error fetching pastRides", error);
                 }
             }   
         }
         fetchProfile();
     }, [])
     
-
+    /*
     function generateTable(pastRides, isDriver) {
         return (
             <div>
@@ -122,6 +106,7 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
             </div>
         );
     }
+        */
 
 
     
@@ -129,6 +114,7 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
     const handleClick = () => {
         setConfirmedRide(null)
     }
+
     return (
         <div>
             <NavBar />
@@ -142,12 +128,11 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                         <div>
                             <h1>Confirmed Ride:</h1>
                             <div>
-                                <p>{`${confirmedRide.departure}`}</p>
+                                <p>{`${confirmedRide.origin}`}</p>
                                 <p>{`${confirmedRide.destination}`}</p>
-                                <p>{`${confirmedRide.date}`}</p>
-                                <p>{`${confirmedRide.time}`}</p>
-                                <p>{`${confirmedRide.bags}`}</p>
-                                <p>{`$${confirmedRide.price}`}</p>
+                                <p>{`${formattedDate}`}</p>
+                                <p>{`${formattedTime}`}</p>
+                                <p>{`${confirmedRide.bags} bags`}</p>
                             </div>
                             <button onClick={() => handleClick()}>Cancel Ride</button>
                         </div>
@@ -159,7 +144,7 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                 }
 
                 <div>
-                    <h1> {firstName && lastName} </h1>
+                    <h1> {`${firstName} ${lastName}`} </h1>
                     {(emailChange) ?
                         (<p> {`Email: ${email}`} </p>) :
                         <input type="email" value={email} placeholder="Enter your email" onChange={(e) => setEmail(e.target.value)} />}
@@ -193,11 +178,6 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
 
                         </div>) :
                         <h1>Rider Information </h1>}
-                    <div>
-                        <h3> Past 5 Rides </h3>
-                        {generateTable(pastRides, isDriver)}
-
-                    </div>
                 </div>
 
             </div>

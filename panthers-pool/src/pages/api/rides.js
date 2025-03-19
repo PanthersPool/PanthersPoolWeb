@@ -35,7 +35,6 @@ router.get(async (req, res) => {
             return res.json(response);
         }
        
-
         res.json(rides);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch rides' });

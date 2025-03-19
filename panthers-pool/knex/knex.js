@@ -1,5 +1,6 @@
+import "dotenv/config"
 import createKnex from "knex";
-import knexConfing from "../../knexfile.js";
+import knexConfig from "../../knexfile.js";
 
 const globalForKnex = global;
 
@@ -11,3 +12,5 @@ export const knex =
   );
 
 if (process.env.NODE_ENV !== "production") globalForKnex.knex = knex;
+
+

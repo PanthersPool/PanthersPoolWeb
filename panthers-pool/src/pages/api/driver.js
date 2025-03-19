@@ -1,3 +1,4 @@
+/*
 import Driver from "panthers-pool/models/driver.js";
 import { createRouter } from "next-connect";
 
@@ -16,3 +17,20 @@ router.get(async (req, res) => {
 });
 
 export default router.handler();
+*/
+
+import { knex } from "../../../knex/knex"
+
+export default async function handler(req, res) {
+    const { method } = req;
+    switch (method) {
+      case "GET": {
+        const driver = await knex("driver").where({'driverID': req.query.driverID}).select('*')
+        res.status(200).json(driver);
+        break;
+      }
+      default:
+        res.setHeader("Allow", ["GET"]);
+        res.status(405).end(`Method ${method} Not Allowed`);
+    }
+  }

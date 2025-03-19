@@ -18,6 +18,7 @@ export default class rides extends BaseModel {
         rideID: { type: "integer" },
         driverID: {type: "integer"},
         destination: { type: "string" },
+        origin: { type: "string" },
         departureTime: { type: "string", format: "date-time" },
         spotsRemaining: { type: "integer" },
         luggageSpace: {type: "boolean"},

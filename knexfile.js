@@ -29,7 +29,7 @@ module.exports = {
     ...defaultSettings,
     client: "sqlite3",
     connection: {
-      filename: "./panthers-pool.db",
+      filename: "./panthers-pool/db.sqlite",
     },
     useNullAsDefault: true,
   },

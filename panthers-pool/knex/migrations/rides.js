@@ -3,6 +3,7 @@ exports.up = function (knex) {
     .createTable("rides", (table) => {
         table.integer("rideID").primary();
         table.integer("driverID").unsigned().references("driver.driverID").onDelete("CASCADE");
+        table.string("origin");
         table.string("destination");
         table.timestamp("departureTime");
         table.integer("spotsRemaining");

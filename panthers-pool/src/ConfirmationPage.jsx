@@ -7,6 +7,20 @@ function ConfirmationPage( {activeRide, setConfirmedRide}) {
 
     const navigate = useNavigate()
 
+    const confirmDate = new Date(activeRide.date)
+
+    const formattedDate = confirmDate.toLocaleDateString('en-US', {
+        month: 'long',
+        day: '2-digit',
+        year: 'numeric'
+    })
+
+    const formattedTime = confirmDate.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+    })
+
     const handleClick = () => {
         setConfirmedRide(activeRide)
         navigate('/profile-page')
@@ -20,10 +34,9 @@ function ConfirmationPage( {activeRide, setConfirmedRide}) {
             <div className="confirmation-container">
                 <div className="confirmation-card">
                     <h2>Confirmation</h2>
-                    <p className="price">$<strong>{`${activeRide.price}`}</strong></p>
+                    <p className="price"><strong>{`${activeRide.origin} to ${activeRide.destination}`}</strong></p>
                     <ul>
-                        <li>{`ADK to ${activeRide.destination}`}</li>
-                        <li>{`${activeRide.date}, ${activeRide.time}`}</li>
+                        <li>{`${formattedDate}, ${formattedTime}`}</li>
                         <li>1 Passenger</li>
                         <li>{`${activeRide.bags} bag`}</li>
                     </ul>

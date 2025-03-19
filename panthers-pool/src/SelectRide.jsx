@@ -26,7 +26,7 @@ export default function SelectRide({ setActiveRide }) {
     useEffect(() => {
         const fetchRides = async () => {
             try {
-                const response = await fetch("/api/allRides");
+                const response = await fetch("http://localhost:3000/api/allRides");
                 if(response.ok){
                     const rides = await response.json();
                     setRides(rides);
@@ -49,9 +49,9 @@ export default function SelectRide({ setActiveRide }) {
 
         <div className="ride-options">
         {rides.map((trip) => (
-            <div key = {trip.id} className="trip-container">
+            <div key = {trip.rideID} className="trip-container">
                 <div className="container">
-                <RideOption departure={trip.departure} destination={trip.destination} date={trip.date} time={trip.time} bags={trip.bags} price={trip.price} seats={trip.seats} setActiveRide={setActiveRide} id={trip.id}/>
+                <RideOption departure={trip.origin} destination={trip.destination} date={trip.departureTime} time={trip.time} bags={trip.luggageSpace} seats={trip.spotsRemaining} setActiveRide={setActiveRide} id={trip.rideID}/>
                 <img src={mapImage} width={250} height={250}/>
                 </div>
             </div>
