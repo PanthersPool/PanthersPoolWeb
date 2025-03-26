@@ -9,16 +9,14 @@ export default function LoginPage () {
             <div className="signIn-box">
                 <h1>Start Riding</h1>
                 <div className="button-group">
-                    <button>Driver Sign-In</button>
-                    <button>Rider Sign-In</button>
+                    <button onClick={() => navigate('/signin')}>Sign-In</button>
                 </div>
             </div>
 
             <div className="createAccount-box">
                 <h2>Not signed up yet?</h2>
                 <div className="button-group">
-                    <button onClick={() => navigate('/driver-sign-up')}>Create Driver Account</button>
-                    <button onClick={() => navigate('/register')}>Create Rider Account</button>
+                    <button onClick={() => navigate('/register')}>Create Account</button>
                 </div>
             </div>
         </div>

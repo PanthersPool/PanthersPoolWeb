@@ -11,6 +11,37 @@ export default function RegisterPage() {
 
     const navigate = useNavigate()
 
+    const handleRegister = async () => {
+        try {
+            // Dummy riderID (you can generate this on backend or here)
+            const riderID = Math.floor(Math.random() * 1000000);
+
+            const response = await fetch('http://localhost:3000/api/auth/register/rider', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    riderID,
+                    firstName,
+                    lastName,
+                    phone: phoneNumber,
+                    email,
+                    password
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Registration successful!');
+                navigate("/map-page");  // ✅ Redirect after success
+            } else {
+                alert(data.error || 'Registration failed.');
+            }
+        } catch (error) {
+            console.error('Registration error:', error);
+            alert('Registration failed due to server error.');
+        }
+    };
 
     return(
         <div>
@@ -36,7 +67,7 @@ export default function RegisterPage() {
                 <input type="text" placeholder="Password" onChange={(n) => setPassword(n.target.value)}></input>
               </div>
               <div>
-                <button type="button" onClick={() => navigate("/map-page")} disabled={!(firstName && lastName && phoneNumber && email && password)}>Finish</button>
+                <button type="button" onClick={handleRegister} disabled={!(firstName && lastName && phoneNumber && email && password)}>Finish</button>
               </div>
               <div>
                 <p>By clicking Finish, you confirm you have read and accepted the Terms of Use and Data protection regulations.</p>
