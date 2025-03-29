@@ -21,6 +21,7 @@ export default class rider extends BaseModel {
         age: { type: "integer" },
         phone: { type: "string" },
         email: { type: "string" },
+        password_hash: { type: "string" },
         profilePicture: { type: "string", format: "binary" },
       },
     };

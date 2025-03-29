@@ -8,6 +8,7 @@ exports.up = function (knex) {
         table.integer("age");
         table.string("phone");
         table.string("email");
+        table.string("password_hash")
         table.binary("profilePicture");
     })
 };
