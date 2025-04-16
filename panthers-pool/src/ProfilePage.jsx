@@ -6,7 +6,7 @@ import "./ProfilePage.css";
 import ProfilePicture from "./assets/ProfilePic.webp";
 
 export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
-
+    // console.log(confirmedRide)
     // Used so the user can change the values
     const [emailChange, setEmailChange] = useState(true);
     const [phoneChange, setPhoneChange] = useState(true);
@@ -22,29 +22,18 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
     const [carColor, setCarColor] = useState("");
     const [carMake, setCarMake] = useState("");
     const [carPlate, setCarPlate] = useState("");
+    const [driverRequests, setDriverRequests] = useState("")
+    const [driverConfirmations, setDriverConfirmations] = useState("")
+    const [requestedRiders, setRequestedRiders] = useState("")
+    const [requestedRides, setRequestedRides] = useState("")
 
     const isDriver = false; // Just a placeholder object will have -> isDriver? true or false
-    const id = 2;
+    const id = 0;
 
-    /*
-    const newDate = new Date(confirmedRide.date);
-
-    const formattedDate = newDate.toLocaleDateString('en-US', {
-        month: 'long',
-        day: '2-digit',
-        year: 'numeric'
-    })
-
-    const formattedTime = newDate.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
-    })
-        */
-
-    useEffect(() => {
+     useEffect(() => {
         const fetchProfile = async () => {
             if (isDriver) {
+                // Fetch Driver Information
                 try {
                     const response = await fetch(`http://localhost:3000/api/driver?driverID=${id}`);
                     if (response.ok) {
@@ -60,8 +49,44 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                 } catch (error) {
                     console.error("Error fetching driver", error);
                 }
+
+                // Set Request for Rides and Confirmed Rides
+                try{
+                    const response2 = await fetch(`http://localhost:3000/api/allRides?driverID=${id}`);
+                    if(response2.ok){
+                        const rides = await response2.json()
+                        const requests = rides.filter((ride) => ride.requests.length > 0)
+                        const confirmations = rides.filter((ride) => ride.riderID.length > 0)
+                        setDriverRequests(requests)
+                        setDriverConfirmations(confirmations)
+
+                        const requestedRiders = []
+                        requests.forEach((request) => {
+                            request.requests.forEach((rider) => {
+                                if(!requestedRiders.includes(rider)){
+                                    requestedRiders.push(rider)
+                                }
+                            })
+                        })
+
+ 
+                        if(requestedRiders.length > 0){
+                            const response3 = await fetch(`http://localhost:3000/api/rider?riderID=${requestedRiders}`);
+
+                            if(response3.ok){
+                                const ridersRequest = await response3.json()
+                                setRequestedRiders(ridersRequest)
+
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error fetching requests", error)
+                }
+                
             } 
             if (!isDriver) {
+                // Get rider information
                 try {
                     const response = await fetch(`http://localhost:3000/api/rider?riderID=${id}`);
                     if (response.ok) {
@@ -74,45 +99,129 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                 } catch (error) {
                     console.error("Error fetching rider", error);
                 }
+
+                // Get confirmed ride information
+                try {
+                    const response2 = await fetch(`http://localhost:3000/api/rides?riderIdSearch=${id}`);
+                    if (response2.ok) {
+                        const ride = await response2.json();
+                        setConfirmedRide(ride[0])
+                    }
+                } catch (error) {
+                    console.error("Error fetching ride", error)
+                }
+
+                // Get requested ride information
+                try {
+                    const response3 = await fetch(`http://localhost:3000/api/getRiderRequests?riderIdSearch=${id}`);
+                    if (response3.ok) {
+                        const requestRides = await response3.json();
+                        setRequestedRides(requestRides)
+                    }
+
+                }catch (error) {
+                    console.error("Error fetching requested rides", error)
+                }
             }   
         }
         fetchProfile();
     }, [])
+
+    //*****Rider methods*******
+
+    //Rider cancels unconfirmed ride request ***Works***
+    const cancelRideRequest = async (rideID) => {
+        try{
+            const response = await fetch(`http://localhost:3000/api/cancelRideRequest?rideID=${rideID}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ riderID: id })
+            })
     
-    /*
-    function generateTable(pastRides, isDriver) {
-        return (
-            <div>
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>{isDriver ? "Rider Name" : "Driver Name"}</th>
-                            <th>Pickup Location</th>
-                            <th>Dropoff Location</th>
-                            <th>Date </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {pastRides.slice(0, 5).map((ride, index) => (
-                            <tr key={index}>
-                                <td>{isDriver ? ride.rider : ride.driver}</td>
-                                <td>{ride.pickup}</td>
-                                <td>{ride.dropoff}</td>
-                                <td>{ride.date} </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-        );
+            if (response.ok){
+                alert("Ride request successfully canceled")
+            }
+        }catch(error){
+            console.log("Error canceling ride request", error)
+        }
+        
     }
-        */
+
+    //Rider cancels confirmed ride request ***Works***
+    const cancelConfirmedRideRequest = async (rideID) => {
+        try{
+            const response = await fetch(`http://localhost:3000/api/cancelConfirmedRide?rideID=${rideID}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ riderID: id })
+            })
+
+            if (response.ok){
+                alert("Confirmed ride request successfully canceled")
+            }
+        }catch (error){
+            console.log("Error canceling confirmed ride request", error)
+        }
+    }
 
 
-    
+    //*******Driver methods*******
 
-    const handleClick = () => {
-        setConfirmedRide(null)
+    //Driver cancels ride **Works**
+    const cancelRide = async(rideID) => {
+        try{
+            const response = await fetch(`http://localhost:3000/api/cancelRideRequest?rideID=${rideID}`, {
+                method:'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+            })
+
+            if(response.ok){
+                alert("Ride successfully canceled")
+            }
+        }catch (error){
+            console.log("Error canceling ride", error)
+        }
+    }
+
+    //Driver accepts ride request from rider **Works**
+    const acceptRequest= async (id, rideID, requests, riderID) => {
+        try {
+            // If driver accepts request for a ride, delete the rider's ID from the ride's request array
+            const newRequests = requests.filter((ids) => ids !== id)
+            const response = await fetch(`http://localhost:3000/api/allRides?rideID=${rideID}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newRequests)
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                // Then push the rider's ID to the ride's riderID array and store it
+
+                alert('Confirmation successful!');
+                const temp = [...riderID]
+                temp.push(id)
+                const newRiderID = temp
+                const response2 = await fetch(`http://localhost:3000/api/rides?rideID=${rideID}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newRiderID)
+                });
+                
+                const data2 = await response2.json()
+
+                if(response2.ok){
+                    alert('Update riderID successful!');
+                }else{
+                    alert(data.error || 'Update failed.');
+                }
+            } else {
+                alert(data.error || 'Confirmation failed.');
+            }
+        } catch (error) {
+            console.error('Confirmation error:', error);
+            alert('Confirmation failed due to server error.');
+        }
     }
 
     return (
@@ -122,24 +231,88 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                 <div>
                     <img src={ProfilePicture} width={200} height={200} />
                 </div>
-                {
-                    (confirmedRide) ?
 
-                        <div>
-                            <h1>Confirmed Ride:</h1>
-                            <div>
-                                <p>{`${confirmedRide.origin}`}</p>
-                                <p>{`${confirmedRide.destination}`}</p>
-                                <p>{`${formattedDate}`}</p>
-                                <p>{`${formattedTime}`}</p>
-                                <p>{`${confirmedRide.bags} bags`}</p>
-                            </div>
-                            <button onClick={() => handleClick()}>Cancel Ride</button>
-                        </div>
+                {
+                    //Show if driver currently has any posted rides
+                    (isDriver) ?
+                        (driverConfirmations.length > 0) ?
+                            driverConfirmations.map((confirmedRide) => 
+                                <div>   
+                                    <p>{`${confirmedRide.origin}`}</p>
+                                    <p>{`${confirmedRide.destination}`}</p>
+                                    <p>{`${confirmedRide.luggageSpace} bags`}</p>
+                                    <button onClick={() => cancelRide(confirmedRide.rideID)}>Cancel Ride</button>
+                                </div>
+                            )
                         :
                         <div>
-                            <h1>No Rides Confirmed</h1>
+                            <h1>No Active Rides</h1>
                         </div>
+                    :
+                    <div></div>
+                }
+
+                {
+                    (isDriver) ?
+                        (Object.keys(requestedRiders).length > 0) ?
+                            driverRequests.map((requestRide) => 
+                                requestRide.requests.map((id) => 
+                                <div>   
+                                    <p>{`${requestedRiders[id].firstName} ${requestedRiders[id].lastName} is requesting the following ride`}</p>
+                                    <p>{`${requestRide.origin}`}</p>
+                                    <p>{`${requestRide.destination}`}</p>
+                                    <button onClick={()=> acceptRequest(id, requestRide.rideID, requestRide.requests, requestRide.riderID)}>Accept Request</button>
+                                </div>
+                                )
+                                
+                            )
+                        :
+                        <div>No ride requests</div>
+                    :
+                    <div></div>
+                }   
+
+                {
+                    //Show if Rider has any unconfirmed ride requests
+                    (isDriver) ?
+                    <div></div>
+                    :
+                        (requestedRides.length > 0) ?
+                        requestedRides.map((requestedRide) =>
+                            <div>
+                                <p>{`${requestedRide.origin}`}</p>
+                                <p>{`${requestedRide.destination}`}</p>
+                                <p>{`${requestedRide.departureTime}`}</p>
+                                <button onClick ={() => cancelRideRequest(requestedRide.rideID)}>Cancel Request</button>
+                            </div>
+                        )
+                        :
+                        <div>
+                            <h1>No Requested Rides</h1>
+                        </div>
+                }
+
+
+                {
+                    // Show if Rider has a confirmed ride
+                    (isDriver) ?
+                        <div></div>
+                    :
+                        (confirmedRide) ?
+
+                            <div>
+                                <h1>Confirmed Ride:</h1>
+                                <div>
+                                    <p>{`${confirmedRide.origin}`}</p>
+                                    <p>{`${confirmedRide.destination}`}</p>
+                                    <p>{`${confirmedRide.luggageSpace} bags`}</p>
+                                </div>
+                                <button onClick={() => cancelConfirmedRideRequest(confirmedRide.rideID)}>Cancel Ride Confirmation</button>
+                            </div>
+                        :
+                            <div>
+                                <h1>No Confirmed Rides</h1>
+                            </div>
 
                 }
 
@@ -176,9 +349,13 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                                 <input type="license" value={carPlate} placeholder="Enter your license #" onChange={(e) => setcarPlate(e.target.value)} />}
                             <button onClick={() => { licenseChange ? setLicenseChange(false) : setLicenseChange(true) }} >  {licenseChange ? "Change License #" : "Submit"} </button>
 
-                        </div>) :
+                        </div>
+                    
+                    ) :
                         <h1>Rider Information </h1>}
                 </div>
+
+
 
             </div>
         </div>

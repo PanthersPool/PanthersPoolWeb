@@ -9,9 +9,10 @@
   display: flex;
   justify-content: center;
   background-color: var(--blue);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
 }
 
 /* General navbar styles */

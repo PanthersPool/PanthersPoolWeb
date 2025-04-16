@@ -5,11 +5,11 @@ html, body {
     height: 100%;
     min-height: 100%;
     background-color: #f5f5f5; /* Light grayish white */
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .content {
-    margin-top: 00px;
+    margin-top: 4rem;
     padding: 20px;
     height: 2000px; /* Ensure there's enough content to make the page scroll */
 }

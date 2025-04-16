@@ -118,3 +118,10 @@ button:hover {
   height: auto;
   border-radius: 10px; /* Optional styling */
 }
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+

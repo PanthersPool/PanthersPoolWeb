@@ -9,7 +9,8 @@
         "luggageSpace": false,
         "atLeastOnePassenger": true,
         "completed": false,
-        "riderID": [1,2]
+        "riderID": [1,2],
+        "requests": []
     },
     
     { 
@@ -22,7 +23,8 @@
         "luggageSpace": true,
         "atLeastOnePassenger": false,
         "completed": false,
-        "riderID": []
+        "riderID": [],
+        "requests": []
     },
     
     { 
@@ -35,7 +37,8 @@
         "luggageSpace": true,
         "atLeastOnePassenger": true,
         "completed": true,
-        "riderID": [3]
+        "riderID": [3],
+        "requests": []
     },
     
     { 
@@ -48,7 +51,8 @@
         "luggageSpace": true,
         "atLeastOnePassenger": true,
         "completed": false,
-        "riderID": [3,4,5]
+        "riderID": [3,4,5],
+        "requests": []
     },
 
     { 
@@ -61,7 +65,8 @@
         "luggageSpace": false,
         "atLeastOnePassenger": false,
         "completed": false,
-        "riderID": []
+        "riderID": [],
+        "requests": []
     }
 
 
