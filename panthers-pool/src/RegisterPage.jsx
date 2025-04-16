@@ -33,7 +33,7 @@ export default function RegisterPage() {
 
             if (response.ok) {
                 alert('Registration successful!');
-                navigate("/map-page");  // ✅ Redirect after success
+                navigate("/map-page");
             } else {
                 alert(data.error || 'Registration failed.');
             }

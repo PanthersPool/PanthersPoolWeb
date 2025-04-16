@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from 'react-router-dom';
 import "./NavBar.css";
+import { useAuth } from './AuthContext';
 
-const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
+const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isNavActive, setIsNavActive] = useState(false); // Track hamburger menu state
   const navigate = useNavigate()
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
 
   // Toggle dropdown visibility
   const toggleDropdown = () => {
@@ -14,13 +16,16 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
 
   // Handle sign-in action
   const handleSignIn = () => {
-    setIsLoggedIn(true);
+    navigate("/login");
   };
 
   // Handle sign-out action
   const handleSignOut = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('riderID');
     setIsLoggedIn(false);
     setIsDropdownOpen(false);
+    navigate("/");
   };
 
   // Toggle hamburger menu visibility

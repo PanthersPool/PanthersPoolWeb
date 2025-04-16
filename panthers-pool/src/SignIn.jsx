@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignIn.css';
+import { useAuth } from './AuthContext';
 
-export default function SignIn({ setIsLoggedIn }) {
+export default function SignIn() {
+    const { setIsLoggedIn } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -24,6 +26,8 @@ export default function SignIn({ setIsLoggedIn }) {
             const data = await response.json();
 
             if (response.ok) {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('riderID', data.riderID);
                 setIsLoggedIn(true);
                 navigate('/');
             } else {

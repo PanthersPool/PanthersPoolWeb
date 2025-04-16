@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import "./LaunchPage.css";
 import "./NavBar.css";
+import { useAuth } from './AuthContext';
 
-const LaunchPage = ({ isLoggedIn, setIsLoggedIn }) => {
-  const navigate = useNavigate();
+const LaunchPage = () => {
+    const { isLoggedIn, setIsLoggedIn } = useAuth();
+    const navigate = useNavigate();
 
   return (
     <div className="launch-page">
