@@ -26,9 +26,10 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
     const [driverConfirmations, setDriverConfirmations] = useState("")
     const [requestedRiders, setRequestedRiders] = useState("")
     const [requestedRides, setRequestedRides] = useState("")
+    const [confirmedRiders, setConfirmedRiders] = useState("")
 
-    const isDriver = false; // Just a placeholder object will have -> isDriver? true or false
-    const id = 0;
+    const isDriver = true; // Just a placeholder object will have -> isDriver? true or false
+    const id = 1;
 
      useEffect(() => {
         const fetchProfile = async () => {
@@ -69,14 +70,31 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                             })
                         })
 
- 
-                        if(requestedRiders.length > 0){
-                            const response3 = await fetch(`http://localhost:3000/api/rider?riderID=${requestedRiders}`);
+                        const confirmedRiders = []
+                        confirmations.forEach((confirmation) => {
+                            confirmation.riderID.forEach((rider) => {
+                                if(!confirmedRiders.includes(rider)) {
+                                    confirmedRiders.push(rider)
+                                }
+                            })
+                        })
 
+                        if(requestedRiders.length > 0){
+                            const query1 = requestedRiders.map(id => `riderID=${id}`).join("&")
+                            const response3 = await fetch(`http://localhost:3000/api/rider?${query1}`);
                             if(response3.ok){
                                 const ridersRequest = await response3.json()
                                 setRequestedRiders(ridersRequest)
 
+                            }
+                        }
+
+                        if(confirmedRiders.length > 0){
+                            const query2 = confirmedRiders.map(id => `riderID=${id}`).join("&")
+                            const response4 = await fetch(`http://localhost:3000/api/rider?${query2}`);
+                            if(response4.ok){
+                                const confirmedRiderInformation = await response4.json()
+                                setConfirmedRiders(confirmedRiderInformation)
                             }
                         }
                     }
@@ -85,7 +103,6 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                 }
                 
             } 
-            if (!isDriver) {
                 // Get rider information
                 try {
                     const response = await fetch(`http://localhost:3000/api/rider?riderID=${id}`);
@@ -122,7 +139,6 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                 }catch (error) {
                     console.error("Error fetching requested rides", error)
                 }
-            }   
         }
         fetchProfile();
     }, [])
@@ -224,6 +240,7 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
         }
     }
 
+
     return (
         <div>
             <NavBar />
@@ -235,18 +252,40 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                 {
                     //Show if driver currently has any posted rides
                     (isDriver) ?
-                        (driverConfirmations.length > 0) ?
-                            driverConfirmations.map((confirmedRide) => 
+                        (driverConfirmations.length > 0) ? 
+                            <>
+                        <h1>Posted Rides:</h1>
+                            {driverConfirmations.map((confirmedRide) => 
                                 <div>   
                                     <p>{`${confirmedRide.origin}`}</p>
                                     <p>{`${confirmedRide.destination}`}</p>
                                     <p>{`${confirmedRide.luggageSpace} bags`}</p>
+                                    <div>
+                                        <>
+                                        { 
+                                        (confirmedRide.riderID.length > 0) ?
+                                        <>
+                                        <h3>Registered Riders</h3>
+                                         {(confirmedRide.riderID.map((riders) => 
+                                            <div>
+                                                <p>{`${confirmedRiders[riders].firstName} ${confirmedRiders[riders].lastName}`}</p>
+                                                <p>{`${confirmedRiders[riders].phone}`}</p>
+                                                <p>{`${confirmedRiders[riders].email}`}</p>
+                                            </div>
+                                        ))}
+                                        </>
+                                            :
+                                        <div></div>
+                                        }
+                                        </>
+                                    </div>
                                     <button onClick={() => cancelRide(confirmedRide.rideID)}>Cancel Ride</button>
                                 </div>
-                            )
+                            )}
+                            </>
                         :
                         <div>
-                            <h1>No Active Rides</h1>
+                            <h1>No Posted Rides</h1>
                         </div>
                     :
                     <div></div>
@@ -255,7 +294,9 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                 {
                     (isDriver) ?
                         (Object.keys(requestedRiders).length > 0) ?
-                            driverRequests.map((requestRide) => 
+                        <>
+                            <h1>Unanswered Ride Requests:</h1>
+                            {driverRequests.map((requestRide) => 
                                 requestRide.requests.map((id) => 
                                 <div>   
                                     <p>{`${requestedRiders[id].firstName} ${requestedRiders[id].lastName} is requesting the following ride`}</p>
@@ -265,41 +306,38 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                                 </div>
                                 )
                                 
-                            )
+                            )}
+                         </>
                         :
-                        <div>No ride requests</div>
+                        <div>No Ride Requests</div>
                     :
                     <div></div>
                 }   
 
                 {
                     //Show if Rider has any unconfirmed ride requests
-                    (isDriver) ?
-                    <div></div>
-                    :
-                        (requestedRides.length > 0) ?
-                        requestedRides.map((requestedRide) =>
+                    (requestedRides.length > 0) ?
+                        <>
+                        <h1>Pending Ride Requests:</h1>
+                        {requestedRides.map((requestedRide) =>
                             <div>
                                 <p>{`${requestedRide.origin}`}</p>
                                 <p>{`${requestedRide.destination}`}</p>
                                 <p>{`${requestedRide.departureTime}`}</p>
                                 <button onClick ={() => cancelRideRequest(requestedRide.rideID)}>Cancel Request</button>
                             </div>
-                        )
+                        )}
+                        </>
                         :
                         <div>
-                            <h1>No Requested Rides</h1>
+                            <h1>No Pending Requests</h1>
                         </div>
                 }
 
 
                 {
                     // Show if Rider has a confirmed ride
-                    (isDriver) ?
-                        <div></div>
-                    :
                         (confirmedRide) ?
-
                             <div>
                                 <h1>Confirmed Ride:</h1>
                                 <div>

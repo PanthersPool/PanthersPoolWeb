@@ -7,6 +7,14 @@
         "phone": "123-456-7890",
         "email": "hello@me.com"
     },
+    {
+        "riderID": 1,
+        "firstName": "Big",
+        "lastName": "Bob",
+        "age": 21,
+        "phone": "123-456-7890",
+        "email": "bob@me.com"
+    },
 
     {
         "riderID": 2,

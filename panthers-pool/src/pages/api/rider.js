@@ -27,12 +27,20 @@ export default async function handler(req, res) {
     switch (method) {
       case "GET": {
         const { riderID } = req.query
-        if(Array.isArray(riderID)) {
-          riderRequests = {}
-          riderID.forEach(async (id) => {
-            const riderInfo = await knex("rider").where({ 'riderID': id }).select('*')
-            riderRequests[id] = riderInfo
+        if(Array.isArray(riderID)){
+          const riderRequests = {}
+
+          const riderPromises = await Promise.all(
+              riderID.map(async (id) => {
+                  const riderInfo = await knex("rider").where({ riderID: id }).select('*')
+                  return { id, riderInfo}
+              })
+          )
+
+          riderPromises.forEach(({ id, riderInfo }) => {
+              riderRequests[id] = riderInfo[0]
           })
+               
           res.status(200).json(riderRequests)
           break;
         }else{  

@@ -116,12 +116,22 @@ app.get('/api/rider', async (req, res) => {
     try{
         const { riderID } = req.query
         if(Array.isArray(riderID)){
-            riderRequests = {}
-            riderID.forEach(async (id) => {
-                const riderInfo = await db("rider").where({ riderID: id }).select('*')
-                riderRequests[id] = riderInfo
+            const riderRequests = {}
+
+            const riderPromises = await Promise.all(
+                riderID.map(async (id) => {
+                    const riderInfo = await db("rider").where({ riderID: id }).select('*')
+                    return { id, riderInfo}
+                })
+            )
+
+            riderPromises.forEach(({ id, riderInfo }) => {
+                riderRequests[id] = riderInfo[0]
             })
+                 
             res.status(200).json(riderRequests)
+            
+            
         }else{
             const rider = await db('rider').where({ riderID : riderID }).select()
             res.json(rider)
