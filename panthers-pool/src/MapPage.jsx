@@ -15,20 +15,38 @@ function MapPage({ setConfirmedRide }) {
 
   const navigate = useNavigate()
   
-  const handleClick = () => {
-    const confirmedRide = {
-      id: 0,
-      departure: departure,
+  const handleClick = async () => {
+    const rideToPost = {
+      rideID: 20,
+      driverID: 6,
+      origin: departure,
       destination: destination,
-      bags: bags,
-      date: date,
-      time: time,
-      seats: seats,
-      price: price
+      departureTime: `${date} ${time}`,
+      spotsRemaining: seats,
+      luggageSpace: bags,
+      atLeastOnePassenger: true,
+      Completed: false,
+      riderID: [],
+      requests: []
     }
 
-    setConfirmedRide(confirmedRide)
-    navigate("/profile-page")
+    try {
+      const response = await fetch('http://localhost:3000/api/allRides', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(rideToPost)
+      })
+
+      if (response.ok){
+        alert('POST Successful')
+        setConfirmedRide(confirmedRide)
+        navigate("/profile-page")
+      }
+    }catch(error) {
+      console.log("Error posting ride", error)
+    }
+
+    
   }
 
 

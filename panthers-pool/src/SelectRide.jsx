@@ -6,21 +6,6 @@ import "./SelectRide.css";
 
 export default function SelectRide({ setActiveRide }) {
 
-    /*
-    const rides =[
-        {
-            id: 0, 
-            departure: "ADK",
-            destination: "Burlington",
-            date: "March 5",
-            time: "9:00AM",
-            bags: 1,
-            price: 50,
-            seats: 6
-        }
-    ]
-    */
-
    const [rides, setRides] = useState([]);
 
     useEffect(() => {
@@ -38,6 +23,8 @@ export default function SelectRide({ setActiveRide }) {
         fetchRides();
     }, [])
 
+    
+
 
 
   
@@ -51,7 +38,7 @@ export default function SelectRide({ setActiveRide }) {
         {rides.map((trip) => (
             <div key = {trip.rideID} className="trip-container">
                 <div className="container">
-                <RideOption departure={trip.origin} destination={trip.destination} date={trip.departureTime} time={trip.time} bags={trip.luggageSpace} seats={trip.spotsRemaining} setActiveRide={setActiveRide} id={trip.rideID}/>
+                <RideOption departure={trip.origin} destination={trip.destination} date={trip.departureTime} time={trip.time} bags={trip.luggageSpace} seats={trip.spotsRemaining} setActiveRide={setActiveRide} id={trip.rideID} riderID = {trip.riderID} requests={trip.requests}/>
                 <img src={mapImage} width={250} height={250}/>
                 </div>
             </div>

@@ -27,7 +27,11 @@ export default class rides extends BaseModel {
         riderID: {
             type: "array",
             items: { type: "integer" }
-        }
+        },
+        requests: {
+          type: "array",
+          items: { type: "integer" }
+      },
       },
     };
   }

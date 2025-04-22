@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import { useNavigate } from "react-router-dom";
 
-export default function RideOption({departure, destination, date, time, bags, seats, setActiveRide, id}) {
+export default function RideOption({departure, destination, date, time, bags, seats, setActiveRide, id, riderID, requests}) {
     const navigate = useNavigate();
     const newDate = new Date(date);
 
@@ -21,12 +21,14 @@ export default function RideOption({departure, destination, date, time, bags, se
         event.preventDefault();
         // Optionally, process form data here
         setActiveRide({
-            riderID: id,
+            rideID: id,
             origin: departure,
             destination: destination,
             date: date,
             time: time,
             bags: bags, 
+            riderID: riderID,
+            requests: requests
         });
         navigate("/confirmation");
     };
@@ -62,5 +64,7 @@ RideOption.propTypes = {
     bags: PropTypes.string,
     price: PropTypes.number,
     setActiveRide: PropTypes.func,
-    id: PropTypes.number
+    id: PropTypes.number,
+    riderID: PropTypes.arrayOf(PropTypes.number),
+    requests: PropTypes.arrayOf(PropTypes.number)
 }

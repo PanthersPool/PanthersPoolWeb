@@ -11,6 +11,7 @@ exports.up = function (knex) {
         table.boolean("atLeastOnePassenger");
         table.boolean("Completed");
         table.specificType('riderID', 'integer[]');
+        table.specificType('requests', 'integer[]');
     })
 };
 exports.down = function (knex) {

@@ -26,9 +26,29 @@ export default async function handler(req, res) {
     const { method } = req;
     switch (method) {
       case "GET": {
-        const rider = await knex("rider").where({'riderID': req.query.riderID}).select('*')
-        res.status(200).json(rider);
-        break;
+        const { riderID } = req.query
+        if(Array.isArray(riderID)){
+          const riderRequests = {}
+
+          const riderPromises = await Promise.all(
+              riderID.map(async (id) => {
+                  const riderInfo = await knex("rider").where({ riderID: id }).select('*')
+                  return { id, riderInfo}
+              })
+          )
+
+          riderPromises.forEach(({ id, riderInfo }) => {
+              riderRequests[id] = riderInfo[0]
+          })
+               
+          res.status(200).json(riderRequests)
+          break;
+        }else{  
+          const rider = await knex("rider").where({'riderID': riderID }).select('*')
+          res.status(200).json(rider);
+          break;
+        }
+        
       }
       default:
         res.setHeader("Allow", ["GET"]);

@@ -21,9 +21,32 @@ function ConfirmationPage( {activeRide, setConfirmedRide}) {
         hour12: true
     })
 
-    const handleClick = () => {
-        setConfirmedRide(activeRide)
-        navigate('/profile-page')
+    console.log(activeRide)
+
+    const handleClick = async () => {
+            try {
+                const temp = [...activeRide.requests]
+                temp.push(0)
+                const newRequests = temp
+                const response = await fetch(`http://localhost:3000/api/allRides?rideID=${activeRide.rideID}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newRequests)
+                });
+                
+                const data = await response.json();
+    
+                if (response.ok) {
+                    alert('Confirmation successful!');
+                    navigate('/profile-page') // ✅ Redirect after success
+                } else {
+                    alert(data.error || 'Confirmation failed.');
+                }
+            } catch (error) {
+                console.error('Confirmation error:', error);
+                alert('Confirmation failed due to server error.');
+            }
+        
 
     }
 
