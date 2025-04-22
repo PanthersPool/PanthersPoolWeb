@@ -263,10 +263,10 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                                     <div>
                                         <>
                                         { 
-                                        (confirmedRide.riderID.length > 0) ?
+                                        (confirmedRide.riderID.length > 0 && confirmedRiders) ?
                                         <>
                                         <h3>Registered Riders</h3>
-                                         {(confirmedRide.riderID.map((riders) => 
+                                         {(confirmedRide.riderID.map((riders) =>
                                             <div>
                                                 <p>{`${confirmedRiders[riders].firstName} ${confirmedRiders[riders].lastName}`}</p>
                                                 <p>{`${confirmedRiders[riders].phone}`}</p>
