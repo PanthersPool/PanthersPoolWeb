@@ -244,7 +244,7 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
     return (
         <div>
             <NavBar />
-            <div className="content">
+             <div className="content">
                 <div>
                     <img src={ProfilePicture} width={200} height={200} />
                 </div>

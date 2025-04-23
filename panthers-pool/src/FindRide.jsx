@@ -2,9 +2,15 @@ import React from "react";
 import NavBar from "./NavBar";
 import "./NavBar.css";
 import "./FindRide.css";
+import Autocomplete from 'react-google-autocomplete'
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const FindRide = () => {
+  const [departure, setDeparture] = useState("")
+  const [destination, setDestination] = useState("")
+
+
   const navigate = useNavigate();
 
 
@@ -22,11 +28,29 @@ const FindRide = () => {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="departure">Departure:</label>
-            <input type="text" id="departure" name="departure" />
+            <Autocomplete
+            apiKey="AIzaSyAvD7zUNPXVJ2O2GhHRueZI7JXJo0xH8mM"
+            onPlaceSelected={(place) => {
+              setDeparture(place)
+            }}
+            option={{componentRestrictions: { country: 'us' }}}
+            id="departure"
+            name="departure"
+            />
+          </div>
+          <div>
           </div>
           <div className="form-group">
             <label htmlFor="destination">Destination:</label>
-            <input type="text" id="destination" name="destination" />
+            <Autocomplete
+            apiKey="AIzaSyAvD7zUNPXVJ2O2GhHRueZI7JXJo0xH8mM"
+            onPlaceSelected={(place) => {
+              setDestination(place)
+            }}
+            option={{componentRestrictions: { country: 'us' }}}
+            id="destination"
+            name="destination"
+            />
           </div>
           <div className="form-group">
             <label htmlFor="time">Time:</label>

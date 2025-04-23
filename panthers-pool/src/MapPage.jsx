@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import mapImage from './assets/mapImage.png'
 import './MapPage.css'
 import NaveBar from './NavBar'
+import Autocomplete from 'react-google-autocomplete'
+
 
 function MapPage({ setConfirmedRide }) {
   const [departure, setDeparture] = useState("")
@@ -57,10 +59,28 @@ function MapPage({ setConfirmedRide }) {
         <div className = "form-container">
         <h1>Turn Your Commute Into Cash!</h1>
             <div>
-              <input type="text" placeholder="Your Departure" value={departure} onChange={(x) => setDeparture(x.target.value)}></input>
+              <Autocomplete
+                apiKey="AIzaSyAvD7zUNPXVJ2O2GhHRueZI7JXJo0xH8mM"
+                onPlaceSelected={(place) => {
+                  setDeparture(place)
+                }}
+                option={{componentRestrictions: { country: 'us' }}}
+                id="destination"
+                name="destination"
+                placeholder="Your Departure"
+              />
             </div>
             <div>
-              <input type="text" placeholder="Your Destination" value={destination} onChange={(y) => setDestination(y.target.value)}></input>
+            <Autocomplete
+              apiKey="AIzaSyAvD7zUNPXVJ2O2GhHRueZI7JXJo0xH8mM"
+              onPlaceSelected={(place) => {
+                setDestination(place)
+              }}
+              option={{componentRestrictions: { country: 'us' }}}
+              id="destination"
+              name="destination"
+              placeholder="Your Destination"
+            />
             </div>
             <div>
               <input type="text" placeholder="Departure Date" value={date} onChange={(a) => setDate(a.target.value)}></input>
