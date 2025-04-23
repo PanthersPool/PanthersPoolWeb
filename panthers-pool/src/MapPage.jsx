@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import mapImage from './assets/mapImage.png'
 import './MapPage.css'
 import NaveBar from './NavBar'
+import { LoadScript } from '@react-google-maps/api';
 import Autocomplete from 'react-google-autocomplete'
 
 
@@ -62,28 +63,25 @@ function MapPage({ setConfirmedRide }) {
         <h1>Turn Your Commute Into Cash!</h1>
             <div>
               <Autocomplete
-                apiKey={apiKey}
                 onPlaceSelected={(place) => {
-                  setDeparture(place)
+                  setDestination(place);
                 }}
-                option={{componentRestrictions: { country: 'us' }}}
+                options={{ componentRestrictions: { country: 'us' } }}
                 id="destination"
                 name="destination"
-                placeholder="Your Departure"
               />
-            </div>
-            <div>
-            <Autocomplete
-              apiKey= {apiKey}
-              onPlaceSelected={(place) => {
-                setDestination(place)
-              }}
-              option={{componentRestrictions: { country: 'us' }}}
-              id="destination"
-              name="destination"
-              placeholder="Your Destination"
-            />
-            </div>
+           </div>
+          <div>
+              <Autocomplete
+                onPlaceSelected={(place) => {
+                  setDestination(place);
+                }}
+                options={{ componentRestrictions: { country: 'us' } }}
+                id="destination"
+                name="destination"
+              />
+            
+          </div>
             <div>
               <input type="text" placeholder="Departure Date" value={date} onChange={(a) => setDate(a.target.value)}></input>
             </div>

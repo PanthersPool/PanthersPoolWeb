@@ -31,7 +31,6 @@ const FindRide = () => {
           <div className="form-group">
             <label htmlFor="departure">Departure:</label>
             <Autocomplete
-            apiKey={apiKey}
             onPlaceSelected={(place) => {
               setDeparture(place)
             }}
@@ -40,12 +39,9 @@ const FindRide = () => {
             name="departure"
             />
           </div>
-          <div>
-          </div>
           <div className="form-group">
             <label htmlFor="destination">Destination:</label>
             <Autocomplete
-            apiKey={apiKey}
             onPlaceSelected={(place) => {
               setDestination(place)
             }}
