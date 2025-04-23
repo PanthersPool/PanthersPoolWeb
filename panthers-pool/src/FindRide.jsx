@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "./NavBar";
 import "./NavBar.css";
 import "./FindRide.css";
+import { LoadScript } from '@react-google-maps/api';
 import Autocomplete from 'react-google-autocomplete'
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
