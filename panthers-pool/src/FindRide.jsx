@@ -10,8 +10,9 @@ const FindRide = () => {
   const [departure, setDeparture] = useState("")
   const [destination, setDestination] = useState("")
 
-
   const navigate = useNavigate();
+
+  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API
 
 
   const handleSubmit = (event) => {
@@ -29,7 +30,7 @@ const FindRide = () => {
           <div className="form-group">
             <label htmlFor="departure">Departure:</label>
             <Autocomplete
-            apiKey="AIzaSyAvD7zUNPXVJ2O2GhHRueZI7JXJo0xH8mM"
+            apiKey={apiKey}
             onPlaceSelected={(place) => {
               setDeparture(place)
             }}
@@ -43,7 +44,7 @@ const FindRide = () => {
           <div className="form-group">
             <label htmlFor="destination">Destination:</label>
             <Autocomplete
-            apiKey="AIzaSyAvD7zUNPXVJ2O2GhHRueZI7JXJo0xH8mM"
+            apiKey={apiKey}
             onPlaceSelected={(place) => {
               setDestination(place)
             }}

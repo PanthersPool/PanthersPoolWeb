@@ -16,6 +16,8 @@ function MapPage({ setConfirmedRide }) {
   const [price, setPrice] = useState(0)
 
   const navigate = useNavigate()
+
+  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API
   
   const handleClick = async () => {
     const rideToPost = {
@@ -60,7 +62,7 @@ function MapPage({ setConfirmedRide }) {
         <h1>Turn Your Commute Into Cash!</h1>
             <div>
               <Autocomplete
-                apiKey="AIzaSyAvD7zUNPXVJ2O2GhHRueZI7JXJo0xH8mM"
+                apiKey={apiKey}
                 onPlaceSelected={(place) => {
                   setDeparture(place)
                 }}
@@ -72,7 +74,7 @@ function MapPage({ setConfirmedRide }) {
             </div>
             <div>
             <Autocomplete
-              apiKey="AIzaSyAvD7zUNPXVJ2O2GhHRueZI7JXJo0xH8mM"
+              apiKey= {apiKey}
               onPlaceSelected={(place) => {
                 setDestination(place)
               }}
