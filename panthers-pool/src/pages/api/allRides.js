@@ -53,8 +53,8 @@ export default async function handler(req, res) {
           luggageSpace: rideToPost.bags,
           atLeastOnePassenger: rideToPost.atLeastOnePassenger,
           Completed: rideToPost.Completed,
-          riderID: rideToPost.riderID,
-          requests: rideToPost.requests
+          riderID: JSON.stringify(rideToPost.riderID),
+          requests: JSON.stringify(rideToPost.requests)
         })
         res.status(200).json({ message: "ride inserted successfully" })
       }

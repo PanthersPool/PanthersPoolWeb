@@ -24,8 +24,8 @@ function MapPage({ setConfirmedRide }) {
     const rideToPost = {
       rideID: 20,
       driverID: 6,
-      origin: departure,
-      destination: destination,
+      origin: departure["address_components"][0]["long_name"],
+      destination: destination["address_components"][0]["long_name"],
       departureTime: `${date} ${time}`,
       spotsRemaining: seats,
       luggageSpace: bags,
