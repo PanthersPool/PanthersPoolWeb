@@ -8,6 +8,7 @@ import ProfilePicture from "./assets/ProfilePic.webp";
 export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
     // console.log(confirmedRide)
     // Used so the user can change the values
+    // Each of these values can be changed via API call
     const [emailChange, setEmailChange] = useState(true);
     const [phoneChange, setPhoneChange] = useState(true);
     const [carMakeChange, setCarMakeChange] = useState(true);
