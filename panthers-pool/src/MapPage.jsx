@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import mapImage from './assets/mapImage.png'
 import './MapPage.css'
 import NaveBar from './NavBar'
+import { LoadScript } from '@react-google-maps/api';
+import Autocomplete from 'react-google-autocomplete'
+
 
 function MapPage({ setConfirmedRide }) {
   const [departure, setDeparture] = useState("")
@@ -14,13 +17,15 @@ function MapPage({ setConfirmedRide }) {
   const [price, setPrice] = useState(0)
 
   const navigate = useNavigate()
+
+  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API
   
   const handleClick = async () => {
     const rideToPost = {
       rideID: 20,
       driverID: 6,
-      origin: departure,
-      destination: destination,
+      origin: departure["address_components"][0]["long_name"],
+      destination: destination["address_components"][0]["long_name"],
       departureTime: `${date} ${time}`,
       spotsRemaining: seats,
       luggageSpace: bags,
@@ -47,7 +52,7 @@ function MapPage({ setConfirmedRide }) {
     }
 
     
-  }
+  }  
 
 
   return (
@@ -57,11 +62,26 @@ function MapPage({ setConfirmedRide }) {
         <div className = "form-container">
         <h1>Turn Your Commute Into Cash!</h1>
             <div>
-              <input type="text" placeholder="Your Departure" value={departure} onChange={(x) => setDeparture(x.target.value)}></input>
-            </div>
-            <div>
-              <input type="text" placeholder="Your Destination" value={destination} onChange={(y) => setDestination(y.target.value)}></input>
-            </div>
+              <Autocomplete
+                onPlaceSelected={(place) => {
+                  setDeparture(place);
+                }}
+                options={{ componentRestrictions: { country: 'us' } }}
+                id="departure"
+                name="departure"
+              />
+           </div>
+          <div>
+              <Autocomplete
+                onPlaceSelected={(place) => {
+                  setDestination(place);
+                }}
+                options={{ componentRestrictions: { country: 'us' } }}
+                id="destination"
+                name="destination"
+              />
+            
+          </div>
             <div>
               <input type="text" placeholder="Departure Date" value={date} onChange={(a) => setDate(a.target.value)}></input>
             </div>
