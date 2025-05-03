@@ -52,7 +52,7 @@ function MapPage({ setConfirmedRide }) {
     }
 
     
-  }
+  }  
 
 
   return (
@@ -64,11 +64,11 @@ function MapPage({ setConfirmedRide }) {
             <div>
               <Autocomplete
                 onPlaceSelected={(place) => {
-                  setDestination(place);
+                  setDeparture(place);
                 }}
                 options={{ componentRestrictions: { country: 'us' } }}
-                id="destination"
-                name="destination"
+                id="departure"
+                name="departure"
               />
            </div>
           <div>
