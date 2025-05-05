@@ -61,7 +61,8 @@ function ConfirmationPage( {activeRide, setConfirmedRide}) {
                     <ul>
                         <li>{`${formattedDate}, ${formattedTime}`}</li>
                         <li>1 Passenger</li>
-                        <li>{`${activeRide.bags} bag`}</li>
+                        <li>{`${activeRide.bags} bags`}</li>
+                        <li>{`$${activeRide.price}`}</li>
                     </ul>
                     <button className="confirm-button" onClick={() => handleClick()}>Confirm</button>
                 </div>

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import { useNavigate } from "react-router-dom";
 
-export default function RideOption({departure, destination, date, time, bags, seats, setActiveRide, id, riderID, requests}) {
+export default function RideOption({departure, destination, date, time, bags, seats, setActiveRide, id, riderID, requests, price}) {
     const navigate = useNavigate();
     const newDate = new Date(date);
 
@@ -28,7 +28,8 @@ export default function RideOption({departure, destination, date, time, bags, se
             time: time,
             bags: bags, 
             riderID: riderID,
-            requests: requests
+            requests: requests,
+            price: price
         });
         navigate("/confirmation");
     };
@@ -39,7 +40,7 @@ export default function RideOption({departure, destination, date, time, bags, se
             <h3>{`${formattedDate}, ${formattedTime} `}</h3>
             {
                 (bags) ?
-                <p>Luggage space available</p>
+                <p>{`${bags} Luggage space available`}</p>
                 :
                 <p>Luggage space not available</p>
             }
@@ -49,6 +50,7 @@ export default function RideOption({departure, destination, date, time, bags, se
                 :
                 <p>{`${seats} seats left`}</p>
             }
+            <p>{`$${price}`}</p>
             
             <button onClick={handleConfirmRoute}>Confirm Route</button>
         </div>

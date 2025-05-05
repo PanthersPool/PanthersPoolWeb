@@ -169,7 +169,8 @@ app.post('/api/allRides', async(req, res)=> {
             atLeastOnePassenger: rideToPost.atLeastOnePassenger,
             Completed: rideToPost.Completed,
             riderID: JSON.stringify(rideToPost.riderID),
-            requests: JSON.stringify(rideToPost.requests)
+            requests: JSON.stringify(rideToPost.requests),
+            price: rideToPost.price
         })
         res.status(200).json({ message: "ride inserted successfully" })
     }catch (error) {
