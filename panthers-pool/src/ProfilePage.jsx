@@ -311,7 +311,9 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                             )}
                          </>
                         :
-                        <div>No Ride Requests</div>
+                        <div>
+                            <h1>No Ride Requests</h1>
+                        </div>
                     :
                     <div></div>
                 }   
