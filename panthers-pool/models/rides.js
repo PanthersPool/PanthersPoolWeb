@@ -21,7 +21,7 @@ export default class rides extends BaseModel {
         origin: { type: "string" },
         departureTime: { type: "string", format: "date-time" },
         spotsRemaining: { type: "integer" },
-        luggageSpace: {type: "boolean"},
+        luggageSpace: {type: "integer"},
         atLeastOnePassenger: {type: "boolean"},
         Completed: {type: "boolean"},
         riderID: {
@@ -32,6 +32,7 @@ export default class rides extends BaseModel {
           type: "array",
           items: { type: "integer" }
       },
+      price: { type: "integer" },
       },
     };
   }

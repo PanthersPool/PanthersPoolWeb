@@ -23,10 +23,6 @@ export default function SelectRide({ setActiveRide }) {
         fetchRides();
     }, [])
 
-    
-
-
-
   
     return (
     <>
@@ -38,7 +34,7 @@ export default function SelectRide({ setActiveRide }) {
         {rides.map((trip) => (
             <div key = {trip.rideID} className="trip-container">
                 <div className="container">
-                <RideOption departure={trip.origin} destination={trip.destination} date={trip.departureTime} time={trip.time} bags={trip.luggageSpace} seats={trip.spotsRemaining} setActiveRide={setActiveRide} id={trip.rideID} riderID = {trip.riderID} requests={trip.requests}/>
+                <RideOption departure={trip.origin} destination={trip.destination} date={trip.departureTime} time={trip.time} bags={trip.luggageSpace} seats={trip.spotsRemaining} setActiveRide={setActiveRide} id={trip.rideID} riderID = {trip.riderID} requests={trip.requests} price={trip.price}/>
                 <img src={mapImage} width={250} height={250}/>
                 </div>
             </div>

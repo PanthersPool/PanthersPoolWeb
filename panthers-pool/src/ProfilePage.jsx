@@ -260,6 +260,7 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                                     <p>{`${confirmedRide.origin}`}</p>
                                     <p>{`${confirmedRide.destination}`}</p>
                                     <p>{`${confirmedRide.luggageSpace} bags`}</p>
+                                    <p>{`$${confirmedRide.price}`}</p>
                                     <div>
                                         <>
                                         { 
@@ -344,6 +345,7 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                                     <p>{`${confirmedRide.origin}`}</p>
                                     <p>{`${confirmedRide.destination}`}</p>
                                     <p>{`${confirmedRide.luggageSpace} bags`}</p>
+                                    <p>{`$${confirmedRide.price}`}</p>
                                 </div>
                                 <button onClick={() => cancelConfirmedRideRequest(confirmedRide.rideID)}>Cancel Ride Confirmation</button>
                             </div>

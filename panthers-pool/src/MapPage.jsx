@@ -32,7 +32,8 @@ function MapPage({ setConfirmedRide }) {
       atLeastOnePassenger: true,
       Completed: false,
       riderID: [],
-      requests: []
+      requests: [],
+      price: price
     }
 
     try {

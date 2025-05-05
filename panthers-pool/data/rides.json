@@ -6,11 +6,12 @@
         "destination": "Boston",
         "departureTime": "2025-03-08T12:00:00",
         "spotsRemaining": 2,
-        "luggageSpace": false,
+        "luggageSpace": 2,
         "atLeastOnePassenger": true,
         "completed": false,
         "riderID": [1,2],
-        "requests": []
+        "requests": [],
+        "price": 20
     },
     
     { 
@@ -20,11 +21,12 @@
         "destination": "London",
         "departureTime": "2025-06-08T12:00:00",
         "spotsRemaining": 1,
-        "luggageSpace": true,
+        "luggageSpace": 3,
         "atLeastOnePassenger": false,
         "completed": false,
         "riderID": [],
-        "requests": []
+        "requests": [],
+        "price": 30
     },
     
     { 
@@ -34,11 +36,12 @@
         "destination": "Monaco",
         "departureTime": "2025-03-02T12:00:00",
         "spotsRemaining": 0,
-        "luggageSpace": true,
+        "luggageSpace": 4,
         "atLeastOnePassenger": true,
         "completed": true,
         "riderID": [3],
-        "requests": []
+        "requests": [],
+        "price": 40
     },
     
     { 
@@ -48,11 +51,12 @@
         "destination": "New York",
         "departureTime": "2025-03-08T12:30:30",
         "spotsRemaining": 1,
-        "luggageSpace": true,
+        "luggageSpace": 5,
         "atLeastOnePassenger": true,
         "completed": false,
         "riderID": [3,4,5],
-        "requests": []
+        "requests": [],
+        "price": 50
     },
 
     { 
@@ -62,11 +66,12 @@
         "destination": "Chicago",
         "departureTime": "2025-03-08T11:34:00",
         "spotsRemaining": 1,
-        "luggageSpace": false,
+        "luggageSpace": 6,
         "atLeastOnePassenger": false,
         "completed": false,
         "riderID": [],
-        "requests": []
+        "requests": [],
+        "price": 60
     }
 
 
