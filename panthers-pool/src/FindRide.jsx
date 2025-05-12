@@ -24,8 +24,10 @@ const FindRide = () => {
   };
 
   return (
-    <div>
-      <NavBar />
+    <div className="page-container">
+      <div className="navbar-container">
+        <NavBar />
+      </div>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <div className="form-group">

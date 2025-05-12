@@ -1,7 +1,14 @@
 /* FindRide.css */
 
 /* Center the form on the page */
+.page-container {
+  padding-top: 4rem;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
 .form-container {
+  height: calc(100vh - 4rem);
   display: flex;
   justify-content: center;
   align-items: center;
