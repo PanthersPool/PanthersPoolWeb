@@ -251,7 +251,6 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                     <img src={ProfilePicture} width={200} height={200} />
                 </div>
                 <div className="grid-container">
-                    
                     <div className="scroll-section">
                         <div className="scroll-header">
                             <h1>Posted Rides:</h1>
