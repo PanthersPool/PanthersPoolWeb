@@ -26,7 +26,7 @@ function ConfirmationPage( {activeRide, setConfirmedRide}) {
     const handleClick = async () => {
             try {
                 const temp = [...activeRide.requests]
-                temp.push(0)
+                temp.push(localStorage.riderID)
                 const newRequests = temp
                 const response = await fetch(`http://localhost:3000/api/allRides?rideID=${activeRide.rideID}`, {
                     method: 'PATCH',

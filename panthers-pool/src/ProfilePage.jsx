@@ -8,6 +8,7 @@ import ProfilePicture from "./assets/ProfilePic.webp";
 export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
     // console.log(confirmedRide)
     // Used so the user can change the values
+    // Each of these values can be changed via API call
     const [emailChange, setEmailChange] = useState(true);
     const [phoneChange, setPhoneChange] = useState(true);
     const [carMakeChange, setCarMakeChange] = useState(true);
@@ -29,9 +30,10 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
     const [confirmedRiders, setConfirmedRiders] = useState("")
 
     const isDriver = true; // Just a placeholder object will have -> isDriver? true or false
-    const id = 1;
+    const id = localStorage.riderID;
 
-     useEffect(() => {
+
+    useEffect(() => {
         const fetchProfile = async () => {
             if (isDriver) {
                 // Fetch Driver Information
@@ -245,18 +247,22 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
         <div>
             <NavBar />
              <div className="content">
-                <div>
+                <div className="section">
                     <img src={ProfilePicture} width={200} height={200} />
                 </div>
-
+                <div className="grid-container">
+                    <div className="scroll-section">
+                        <div className="scroll-header">
+                            <h1>Posted Rides:</h1>
+                        </div>
+                    <div className="scroll-body">
                 {
                     //Show if driver currently has any posted rides
                     (isDriver) ?
                         (driverConfirmations.length > 0) ? 
                             <>
-                        <h1>Posted Rides:</h1>
                             {driverConfirmations.map((confirmedRide) => 
-                                <div>   
+                                <div className="entry">   
                                     <p>{`${confirmedRide.origin}`}</p>
                                     <p>{`${confirmedRide.destination}`}</p>
                                     <p>{`${confirmedRide.luggageSpace} bags`}</p>
@@ -285,18 +291,21 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                             )}
                             </>
                         :
-                        <div>
-                            <h1>No Posted Rides</h1>
-                        </div>
+                        <div className="empty-message">No Posted Rides</div>
                     :
-                    <div></div>
+                    null
                 }
-
+                </div>
+                </div>
+                <div className="scroll-section">
+                    <div className="scroll-header">                            
+                        <h1>Unanswered Ride Requests:</h1>
+                    </div>
+                <div className="scroll-body">
                 {
                     (isDriver) ?
                         (Object.keys(requestedRiders).length > 0) ?
-                        <>
-                            <h1>Unanswered Ride Requests:</h1>
+                        <div className="entry">
                             {driverRequests.map((requestRide) => 
                                 requestRide.requests.map((id) => 
                                 <div>   
@@ -308,18 +317,25 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                                 )
                                 
                             )}
-                         </>
+                         </div>
                         :
-                        <div>No Ride Requests</div>
+                        <div className="empty-message">No Ride Requests</div>
                     :
                     <div></div>
-                }   
+                } 
+                </div>
+                </div>
 
+
+                <div className="scroll-section">
+                    <div className="scroll-header">                        
+                        <h1>Pending Ride Requests:</h1>
+                    </div>
+                    <div className="scroll-body">
                 {
                     //Show if Rider has any unconfirmed ride requests
                     (requestedRides.length > 0) ?
-                        <>
-                        <h1>Pending Ride Requests:</h1>
+                        <div className="entry">
                         {requestedRides.map((requestedRide) =>
                             <div>
                                 <p>{`${requestedRide.origin}`}</p>
@@ -328,19 +344,22 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                                 <button onClick ={() => cancelRideRequest(requestedRide.rideID)}>Cancel Request</button>
                             </div>
                         )}
-                        </>
-                        :
-                        <div>
-                            <h1>No Pending Requests</h1>
                         </div>
+                        :
+                        <div className="empty-message">No Pending Requests</div>
                 }
+                </div>
+                </div>
 
-
+                <div className="scroll-section">
+                    <div className="scroll-header">                                
+                        <h1>Confirmed Ride:</h1>
+                    </div>
+                    <div className="scroll-body">
                 {
                     // Show if Rider has a confirmed ride
                         (confirmedRide) ?
-                            <div>
-                                <h1>Confirmed Ride:</h1>
+                            <div className="entry">
                                 <div>
                                     <p>{`${confirmedRide.origin}`}</p>
                                     <p>{`${confirmedRide.destination}`}</p>
@@ -350,13 +369,13 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
                                 <button onClick={() => cancelConfirmedRideRequest(confirmedRide.rideID)}>Cancel Ride Confirmation</button>
                             </div>
                         :
-                            <div>
-                                <h1>No Confirmed Rides</h1>
-                            </div>
+                            <div className="empty-message">No Confirmed Rides</div>
 
                 }
+                </div>
+                </div>
 
-                <div>
+                <div className="section">
                     <h1> {`${firstName} ${lastName}`} </h1>
                     {(emailChange) ?
                         (<p> {`Email: ${email}`} </p>) :
@@ -370,7 +389,7 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
 
                 </div>
                 {/* Driver or Rider Portal*/}
-                <div>
+                <div className="section">
                     {(isDriver) ? (
                         <div > <h1>Driver Information </h1>
 
@@ -398,6 +417,7 @@ export default function ProfilePage({ confirmedRide, setConfirmedRide }) {
 
 
             </div>
+        </div>
         </div>
     )
 
